@@ -179,6 +179,37 @@ Da lighedstegnet gælder koordinatvis, er beviset gennemført.
 	\item Stjæl fra Katrine.
 \end{itemize}
 
+\begin{theorem}{Logaritme laver gange om til plus}{loggangeplus}
+	\[\log_A{B \cdot C} = \log_AB + \log_AC\]
+\end{theorem}
+\textbf{Bevis:}
+\begin{align*}
+	\log_A{B \cdot C} &= \log_AB + \log_AC \iff\\
+	A^{\log_A{B \cdot C}} &= A^{\log_AB + \log_AC}\\
+						  &= A^{\log_AB} \cdot A^{\log_AC} \iff\\
+	B \cdot C &= B \cdot C
+\end{align*}
+
+\begin{theorem}{Logaritmeregneregel}{}
+	$\log_AB^C = C \cdot \log_AB$
+\end{theorem}
+\textbf{Bevis:}
+\begin{align*}
+	\log_AB^C &= \log_A{B \cdot B \cdots B}\\
+			  &= \log_A{B} + \log_A{B} + \cdots + \log_A{B}\\
+			  &= C \cdot \log_AB
+\end{align*}
+
+\begin{theorem}{Logaritmeregneregel}{logswap}
+	$A^{\log_BC} = C^{\log_BA}$.
+\end{theorem}
+\textbf{Bevis:}
+\begin{align*}
+	A^{\log_BC} &= C^{\log_BA}\\
+	B^{\log_B{A^{\log_BC}}} &= B^{\log_B{C^{\log_BA}}}\\
+	B^{\log_BC \cdot \log_B{A}} &= B^{\log_BA \cdot \log_B{C}}
+\end{align*}
+
 \begin{definition}{Plusfølge}{}
 	En plusfølge lægger altid et bestemt tal til for hvert skridt i følgen.
 \end{definition}
@@ -186,6 +217,11 @@ Da lighedstegnet gælder koordinatvis, er beviset gennemført.
 \begin{definition}{Gangefølge}{}
 	En gangefølge gange altid et bestemt tal for hvert skridt i følgen.
 \end{definition}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{plus_og_gange}
+\end{figure}
 
 \begin{theorem}{Gangeføĺge - Gangefølge}{}
 	To gangefølger giver altid anledning til en potenssammenhæng.
@@ -208,15 +244,11 @@ Da lighedstegnet gælder koordinatvis, er beviset gennemført.
 	&= \frac{d}{c^{\log_{Px}{Py}}}\cdot x^{\log_{Px}{Py}}
 \end{align*}
 
-\begin{theorem}{Logaritmeregneregel}{logswap}
-	$A^{\log_BC} = C^{\log_BA}$.
-\end{theorem}
-\textbf{Bevis:}
-\begin{align*}
-	A^{\log_BC} &= C^{\log_BA}\\
-	\log_B{A^{\log_BC}} &= \log_B{C^{\log_BA}}\\
-	\log_BC \cdot \log_B{A} &= \log_BA \cdot \log_B{C}\\
-\end{align*}
+\begin{figure}[H]
+	\centering
+	\caption{En grafisk fremstilling af ovenstående}
+	\includegraphics[width=0.8\textwidth]{gangegange}
+\end{figure}
 
 \section{Funktioner}
 \subsection{Giv en præsentation af en selvvalgt del af teorien for funktioner 

@@ -240,27 +240,24 @@ Da der har været ensbetydende pile er beviset fuldført.
 	\label{plus_og_gange}
 \end{figure}
 
-\begin{theorem}{Gangeføĺge - Gangefølge}{gangegange}
-	To gangefølger giver altid anledning til en potenssammenhæng.
+\begin{theorem}{Gangefølge - Gangefølge}{gangegange}
+	To gangefølger,
+	\begin{center}
+		$c\cdot \Rho x^n$ og $d\cdot \Rho y^n$,
+	\end{center}
+	giver altid anledning til en potenssammenhæng
 	\[
-		y = \frac{d}{c^{\log_{\Rho x}{\Rho y}}}\cdot x^{\log_{\Rho x}{\Rho y}}
+		y = \frac{d}{c^{\log_{\Rho x}{\Rho y}}}\cdot x^{\log_{\Rho x}{\Rho y}}.
 	\]
+	\textit{Bemærk at $c^{\log_{\Rho x}{\Rho y}}$ er 1, hvis x-følgen starter ved 1.}
 \end{theorem}
-
-De to gangefølger defineres
-\begin{align*}
-	x_n &= c\cdot \Rho x^n\\
-	y_n &= d\cdot \Rho y^n\\
-\end{align*}
 
 y ønskes at kunne blive fundet ud fra vilkårlig x. Til det formål skal vi kende
 $n$.
 \begin{align*}
 	x &= c\cdot \Rho x^n\\
 \intertext{Der divideres med c, log rho x tages}
-	\log_{\Rho x}{x}-\log_{\Rho x}{c} &= n\\
-\intertext{Ukendt regneregel benyttes}
-	n &= \log_{\Rho x}{\frac{x}{c}}\\
+	n &= \log_{\Rho x}{\frac{x}{c}}
 \end{align*}
 
 Denne $n$ kan indsættes i udtrykket for $y_n$, så enhver y kan findes.

@@ -9,6 +9,7 @@
 \usepackage[e]{esvect}
 
 %\synctex=1
+\newcommand{\Rho}{\mathrm{P}}
 
 \title{Eksamensnoter}
 \author{Ricardt Riis}
@@ -171,13 +172,17 @@ Da lighedstegnet gælder koordinatvis, er beviset gennemført.
 	\end{enumerate}
 \end{tcolorbox}
 
-%\section{Funktioner}
-\begin{itemize}
-	\item Plusfølger lægger til, gangefølger ganger.
-	\item Plusfølger gentaget = gange, den anden exponential
-	\item Logaritmer laver gange om til plus
-	\item Stjæl fra Katrine.
-\end{itemize}
+\begin{eksempel*}{Hvordan ville jeg gøre?}{}\\
+	Jeg ville forklare stoffet i følgende rækkefølge.
+	\begin{itemize}
+		\item Introducer hvad plusfølger og gangefølger er 
+			(definition \ref{df:plusfølge} og \ref{df:gangefølge}).\\
+			Gør herunder brug af figur \ref{plus_og_gange} %TODO
+		\item Forklar sætning \ref{th:gangegange}, evt. ved brug af figur \ref{gangegange}
+		\item Hvis der er mere tid til overs, bevis logaritmeregnereglerne i rækkefølgen
+			sætning \ref{th:logswap}, \ref{th:logpotenstilgange} og \ref{th:loggangeplus}.
+	\end{itemize}
+\end{eksempel*}
 
 \begin{theorem}{Logaritme laver gange om til plus}{loggangeplus}
 	\[\log_A{B \cdot C} = \log_AB + \log_AC\]
@@ -185,18 +190,24 @@ Da lighedstegnet gælder koordinatvis, er beviset gennemført.
 \textbf{Bevis:}
 \begin{align*}
 	\log_A{B \cdot C} &= \log_AB + \log_AC \iff\\
+\intertext{Der opløftes i A for at potensregneregler kan benyttes}
 	A^{\log_A{B \cdot C}} &= A^{\log_AB + \log_AC}\\
+\intertext{Føromtalte potensregneregel benyttes}
 						  &= A^{\log_AB} \cdot A^{\log_AC} \iff\\
+\intertext{$A^{\log_A}$ går ud}
 	B \cdot C &= B \cdot C
 \end{align*}
 
-\begin{theorem}{Logaritmeregneregel}{}
+\begin{theorem}{Logaritmeregneregel}{logpotenstilgange}
 	$\log_AB^C = C \cdot \log_AB$
 \end{theorem}
 \textbf{Bevis:}
+Opløftning er det samme som gentagen gange
 \begin{align*}
-	\log_AB^C &= \log_A{B \cdot B \cdots B}\\
-			  &= \log_A{B} + \log_A{B} + \cdots + \log_A{B}\\
+	\log_AB^C &= \log_A{\underbrace{B \cdot B \cdots B}_{C\text{ gange}}}\\
+\intertext{Jævnfør sætning \ref{th:loggangeplus} så kan man skrive}
+			  &= \underbrace{\log_A{B} + \log_A{B} + \cdots + \log_A{B}}_{C\text{ gange}}\\
+\intertext{Da der lægges sammen C gange, og gange er gentaget plus, så gælder}
 			  &= C \cdot \log_AB
 \end{align*}
 
@@ -204,50 +215,68 @@ Da lighedstegnet gælder koordinatvis, er beviset gennemført.
 	$A^{\log_BC} = C^{\log_BA}$.
 \end{theorem}
 \textbf{Bevis:}
+Reglen opskrives
 \begin{align*}
-	A^{\log_BC} &= C^{\log_BA}\\
-	B^{\log_B{A^{\log_BC}}} &= B^{\log_B{C^{\log_BA}}}\\
+	A^{\log_BC} &= C^{\log_BA} \iff\\
+\intertext{Vi gør på en smart måde ingenting}
+	B^{\log_B{A^{\log_BC}}} &= B^{\log_B{C^{\log_BA}}} \iff\\
+\intertext{Ifølge sætning \ref{th:logpotenstilgange} så kan vi}
 	B^{\log_BC \cdot \log_B{A}} &= B^{\log_BA \cdot \log_B{C}}
 \end{align*}
+Da der har været ensbetydende pile er beviset fuldført.
 
-\begin{definition}{Plusfølge}{}
+\begin{definition}{Plusfølge}{plusfølge}
 	En plusfølge lægger altid et bestemt tal til for hvert skridt i følgen.
 \end{definition}
 
-\begin{definition}{Gangefølge}{}
+\begin{definition}{Gangefølge}{gangefølge}
 	En gangefølge gange altid et bestemt tal for hvert skridt i følgen.
 \end{definition}
 
 \begin{figure}[H]
 	\centering
+	\caption{Forklaring af definitionerne}
 	\includegraphics[width=0.8\textwidth]{plus_og_gange}
+	\label{plus_og_gange}
 \end{figure}
 
-\begin{theorem}{Gangeføĺge - Gangefølge}{}
+\begin{theorem}{Gangeføĺge - Gangefølge}{gangegange}
 	To gangefølger giver altid anledning til en potenssammenhæng.
 	\[
-		y = \frac{d}{c^{\log_{Px}{Py}}}\cdot x^{\log_{Px}{Py}}
+		y = \frac{d}{c^{\log_{\Rho x}{\Rho y}}}\cdot x^{\log_{\Rho x}{\Rho y}}
 	\]
 \end{theorem}
 
+De to gangefølger defineres
 \begin{align*}
-	x_n &= c\cdot Px^n\\
-	y_n &= d\cdot Py^n\\
-	\intertext{$y$ ønskes fundet ud fra vilkårlig $x$. Dermed ønskes $n$ 
-	fundet}
-	x &= c\cdot Px^n\\
-	\log_{Px}{x}-\log_{Px}{c} &= n\\
-	n &= \log_{Px}{\frac{x}{c}}\\
-	\intertext{Dette kan sættes ind i $y$ funktionen}
-	y &= d\cdot Py^{\log_{Px}{\frac{x}{c}}}\\
-	&= d\cdot \frac{x}{c}^{\log_{Px}{Py}}\gap\text{Bevis regneregel}\\
-	&= \frac{d}{c^{\log_{Px}{Py}}}\cdot x^{\log_{Px}{Py}}
+	x_n &= c\cdot \Rho x^n\\
+	y_n &= d\cdot \Rho y^n\\
+\end{align*}
+
+y ønskes at kunne blive fundet ud fra vilkårlig x. Til det formål skal vi kende
+$n$.
+\begin{align*}
+	x &= c\cdot \Rho x^n\\
+\intertext{Der divideres med c, log rho x tages}
+	\log_{\Rho x}{x}-\log_{\Rho x}{c} &= n\\
+\intertext{Ukendt regneregel benyttes}
+	n &= \log_{\Rho x}{\frac{x}{c}}\\
+\end{align*}
+
+Denne $n$ kan indsættes i udtrykket for $y_n$, så enhver y kan findes.
+\begin{align*}
+	y &= d\cdot \Rho y^{\log_{\Rho x}{\frac{x}{c}}}\\
+\intertext{Per sætning \ref{th:logpotenstilgange}}
+	&= d\cdot \left(\frac{x}{c}\right)^{\log_{\Rho x}{\Rho y}}\\
+\intertext{Potensregneregel}
+	&= \frac{d}{c^{\log_{\Rho x}{\Rho y}}}\cdot x^{\log_{\Rho x}{\Rho y}}
 \end{align*}
 
 \begin{figure}[H]
 	\centering
 	\caption{En grafisk fremstilling af ovenstående}
 	\includegraphics[width=0.8\textwidth]{gangegange}
+	\label{gangegange}
 \end{figure}
 
 \section{Funktioner}

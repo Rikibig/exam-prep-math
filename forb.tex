@@ -282,19 +282,30 @@ Denne $n$ kan indsættes i udtrykket for $y_n$, så enhver y kan findes.
 	\tcblower
 	\begin{enumerate}
 		\item Giv en præsentation af en selvvalgt del af teorien for funktioner af to variable.
-		\item Adled formlen for hældningen af regressionslinjen ved mindste kvadraters metode.
-\end{enumerate}
+		\item Udled formlen for hældningen af regressionslinjen ved mindste kvadraters metode.
+	\end{enumerate}
 \end{tcolorbox}
 
-\begin{itemize}
-	\item Funktioner tager et input, og laver et output.
-	\item For vektorfunktioner gælder at deres signatur er
-		\[
-			\mathbb{R} \rightarrow \mathbb{R}^2.
-		\] 
-\end{itemize}
+\begin{eksempel*}{Hvordan ville jeg gøre?}
+	Jeg ville
+	\begin{enumerate}
+		\item Først tale om funktioner (tegne maskinen), og være opmærksom på
+			to input.
+		\item Tale om definitionen på partiel afledning.
+		\item Tale om gradienten og stationære punkter.
+		\item Påbegynde beviset for sætning \ref{th:linreg2}, og stoppe ved
+			indsigten om
+			\[
+				\overline{y} = a_{reg} \cdot \overline{x} + b_{reg}.
+			\] 
+		\item Bevise sætning \ref{th:propreg} og \ref{th:aregpoint}.
+		\item Færdiggøre beviset for sætning \ref{th:linreg2}.
+	\end{enumerate}
+	Derudover ville jeg henlede opmærksomheden på at man også godt kunne bevise
+	sætning \ref{th:linreg2} kun ved brug af funktioner af to variable.
+\end{eksempel*}
 
-\begin{definition}{Paritel afledning}{pderi}
+\begin{definition}{Partiel afledning}{pderi}
 	En funktion af to variable, $f(x, y)$ kan afledes partielt.
 	\[
 		\frac{\partial}{\partial x} f(x, y)

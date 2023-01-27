@@ -333,7 +333,7 @@ Denne $n$ kan indsættes i udtrykket for $y_n$, så enhver y kan findes.
 \end{definition}
 
 \begin{definition}{Stationære punkter}{station}
-	Et stationært punkt til en funktion $f(x, y)$ defineres ved punktet 
+	Et stationært punkt til en funktion $f(x, y)$ defineres ved et punkt 
 	$(x_0, y_0)$ hvor $x_0$ og $y_0$ opfylder
 	\[
 		\nabla f(x_0, y_0) = \vec{0}.
@@ -341,9 +341,10 @@ Denne $n$ kan indsættes i udtrykket for $y_n$, så enhver y kan findes.
 \end{definition}
 
 \begin{theorem}{Proportionalitetsregression}{propreg}
-	Den bedste hældning for en ret linje gennem (0, 0) er givet ved
+	Den bedste hældning for en ret linje ved brug af mindste kvadraters metode
+	gennem (0, 0) er givet ved
 	\[
-		a_{reg} = \frac{\sum_{i=1}^n y_i}{\sum_{i=1}^n x_i}
+	    a_{reg} = \frac{\sum_{i=1}^n x_i \cdot y_i}{\sum_{i=1}^n x_i^2}
 	\] 
 	hvor $n$ er så mange punkter der laves regression på, og $x_i$ er x-koordinaten
 	til det i-te punkt, og $y_i$ tilsvarende er y-koordinaten til det i-te punkt.
@@ -363,23 +364,19 @@ mindst. Der differentieres og sættes lig nul.
 \intertext{Grundet ledvis differentiation}
 				 &= \sum_{i=1}^n \left((x_i \cdot a_{reg} - y_i)^2\right)'\\
 				 \intertext{Kædereglen}
-				 &= \sum_{i=1}^n \left(2(x_i \cdot a_{reg} - y_i) \cdot a_{reg}\right)\\
-				 \intertext{Distributiv lov}
-				 &= 2 \cdot a_{reg} \sum_{i=1}^n (x_i \cdot a_{reg} - y_i)\\
-				 \intertext{Kommutativ lov}
-				 &= 2 \cdot a_{reg} \left(\sum_{i=1}^n (x_i \cdot a_{reg}) - \sum_{i=1}^n y_i\right)\\
-				 \intertext{Distributiv lov}
-				 &= 2 \cdot a_{reg} \left(a_{reg} \cdot \sum_{i=1}^n x_i - \sum_{i=1}^n y_i\right)\\
-				 \intertext{Der divideres}
-				 &= a_{reg} \cdot \sum_{i=1}^n x_i - \sum_{i=1}^n y_i\\
-				 \intertext{Der isoleres}
-		 a_{reg} &= \frac{\sum_{i=1}^n y_i}{\sum_{i=1}^n x_i}
+				 &= \sum_{i=1}^n \left(2(x_i \cdot a_{reg} - y_i) \cdot x_i\right)\\
+				 &= \sum_{i=1}^n \left(2(x_i^2 \cdot a_{reg} - x_i \cdot y_i)\right)\\
+				 &= 2 \cdot \sum_{i=1}^n (x_i^2 \cdot a_{reg} - x_i \cdot y_i)\\
+				 &= \sum_{i=1}^n (x_i^2 \cdot a_{reg} - x_i \cdot y_i)\\
+				 &= \sum_{i=1}^n x_i^2 \cdot a_{reg} - \sum_{i=1}^n x_i \cdot y_i\\
+				 &= a_{reg} \cdot \sum_{i=1}^n x_i^2 - \sum_{i=1}^n x_i \cdot y_i\\
+	     a_{reg} &=  \frac{\sum_{i=1}^n x_i \cdot y_i}{\sum_{i=1}^n x_i^2}
 \end{align*}
 
 \begin{theorem}{Hældning for ret linje gennem givet punkt}{aregpoint}
 	Den bedste hældning for en ret linje gennem $(x_0, y_0)$ er givet ved
 	\[
-		a_{reg} = \frac{\sum_{i=1}^n (y_i-y_0)}{\sum_{i=1}^n (x_i-x_0)}
+		a_{reg} = \frac{\sum_{i=1}^n (x_i-x_0)(y_i-y_0)}{\sum_{i=1}^n (x_i-x_0)^2}
 	\] 
 	hvor $n$ er så mange punkter der laves regression på, og $x_i$ er x-koordinaten
 	til det i-te punkt, og $y_i$ tilsvarende er y-koordinaten til det i-te punkt.
@@ -396,7 +393,7 @@ y-koordinaten for hvert punkt.
 	ved mindste kvadraters metode med følgende hældning $a_{reg}$ og
 	begyndelsesværdi $b_{reg}$.
 	\[
-		a_{reg} = \frac{\sum_{i=1}^n (y_i-\overline{y})}{\sum_{i=1}^n (x_i-\overline{x})}.
+		a_{reg} = \frac{\sum_{i=1}^n (x_i-\overline{y})(y_i-\overline{y})}{\sum_{i=1}^n (x_i-\overline{x})^2}.
 	\] 
 	\[
 		b_{reg} = \overline{y} - a_{reg} \cdot \overline{x}.
@@ -442,7 +439,7 @@ Dette er meget centralt, for det fortæller, at punktet $\overline{x}$ og
 $\overline{y}$ ligger på regressionslinjen. Dermed kan hældningen findes ved
 sætning \ref{th:aregpoint}
 \[
-	a_{reg} = \frac{\sum_{i=1}^n (y_i-\overline{y})}{\sum_{i=1}^n (x_i-\overline{x})}.
+	a_{reg} = \frac{\sum_{i=1}^n (x_i-\overline{y})(y_i-\overline{y})}{\sum_{i=1}^n (x_i-\overline{x})^2}.
 \] 
 Begyndelsesværdien er triviel at finde
 \[

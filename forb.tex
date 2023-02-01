@@ -563,13 +563,44 @@ standardfunktioner er kontinuerte.
 	Sekanthældningen er hældningen for en ret linje gennem to forskellige
 	punkter på en funktion $f$.
 	\[
-		d_f(x) = \frac{f(x) - f(x_0)}{x - x_0}
+		d_{f,x_0}(x) = \frac{f(x) - f(x_0)}{x - x_0}
 	\] 
 \end{definition}
 
 \begin{definition}{Differentiabilitet}{diffhed}
-	\[f'(x_0) = \lim_{x\to x_0} d_f(x)\]
+	\[f'(x_0) = \lim_{x \to x_0} d_f(x)\]
 \end{definition}
+
+\begin{theorem}{Kædereglen}{chainrule}
+	\[
+		(f \circ g)' = (f' \circ g) \cdot g'
+	\] 
+\end{theorem}
+
+\textbf{Bevis:}
+\begin{align*}
+	d_{f \circ g,x_0}(x) &= \frac{(f \circ g)(x) - (f \circ g)(x_0)}{x - x_0}\\
+					  &= \frac{f(g(x)) - f(g(x_0))}{x - x_0}\\
+	\intertext{Der ganges med 1 på en sjov måde}
+					  &= \frac{f(g(x)) - f(g(x_0))}{x - x_0} \cdot 
+					  \frac{g(x) - g(x_0)}{g(x) - g(x_0)}\\
+		\intertext{Vha. brøkregneregel}
+					  &= \frac{f(g(x)) - f(g(x_0))}{g(x) - g(x_0)} \cdot 
+					  \frac{g(x) - g(x_0)}{x - x_0}\\
+					  &= d_{f,g(x_0)}(g(x)) \cdot d_{g,x_0}(x)
+\end{align*}
+Grundet viden om sekanthældninger og grænseværdier
+\begin{align*}
+	\lim_{x \to x_0} d_{f \circ g,x_0}(x) &= (f \circ g)'(x_0)\\
+	 		&= \lim_{x \to x_0} d_{f,g(x_0)}(g(x)) \cdot d_{g,x_0}(x)\\
+	\intertext{Når $x$ går mod $x_0$, og hvis $g$ er kontinuert og ikke
+	konstant, så går $g(x)$ mod $g(x_0)$. Dermed}
+	 		&= f'(g(x_0)) \cdot g'(x_0)
+\end{align*}
+Da $x_0$ er vilkårlig gælder
+\[
+	(f \circ g)' = (f' \circ g) \cdot g'.
+\] 
 
 \begin{itemize}
 	\item Kædereglen

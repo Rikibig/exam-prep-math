@@ -541,20 +541,40 @@ Begyndelsesværdien er triviel at finde
 	&= n \cdot x^{\overline{n-1}}
 \end{align*}
 
-\section{Differential- og integralregning}
-\subsection{Giv en præsentation af en selvvalgt del af teorien for 
-differential- og integralregning}
-\begin{itemize}
-	\item Sekanthældning
-	\item Grænseværdier
-	\item Tangenthældninger
-\end{itemize}
+\begin{tcolorbox}
+	\section{Differential- og integralregning}
+	\tcblower
+	\begin{enumerate}
+		\item Giv en præsentation af en selvvalgt del af teorien for
+			differential- og integralregning		
+		\item Bevis mindst en regneregel for differentiation	
+	\end{enumerate}
+\end{tcolorbox}
 
-\subsection{Bevis mindst en regneregel for differentiation}
+\begin{definition}{Kontinuitet}{kont}
+	\[\lim_{x\to x_0} f(x) = f(x_0)\]	
+\end{definition}
+
+For at noget skal være kontinuert, skal, hvis x-værdierne er tæt på hinanden,
+så skal y-værdierne også være tæt på hinanden. Vi går ud fra, at alle
+standardfunktioner er kontinuerte.
+
+\begin{definition}{Sekanthældning}{sekant}
+	Sekanthældningen er hældningen for en ret linje gennem to forskellige
+	punkter på en funktion $f$.
+	\[
+		d_f(x) = \frac{f(x) - f(x_0)}{x - x_0}
+	\] 
+\end{definition}
+
+\begin{definition}{Differentiabilitet}{diffhed}
+	\[f'(x_0) = \lim_{x\to x_0} d_f(x)\]
+\end{definition}
+
 \begin{itemize}
 	\item Kædereglen
 	\item $(\ln{x})'$
-	\item $(x^n)'$, hvor $n\in\C$
+	\item $(x^n)'$, hvor $n\in\mathbb{C}$
 \end{itemize}
 
 \section{Differential- og integralregning}

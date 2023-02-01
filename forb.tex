@@ -1,6 +1,6 @@
 \documentclass{article}
 
-\input{../preamble.tex}
+\input{preamble.tex}
 
 \usepackage{caption}
 
@@ -366,11 +366,15 @@ mindst. Der differentieres og sættes lig nul.
 				 \intertext{Kædereglen}
 				 &= \sum_{i=1}^n \left(2(x_i \cdot a_{reg} - y_i) \cdot x_i\right)\\
 				 &= \sum_{i=1}^n \left(2(x_i^2 \cdot a_{reg} - x_i \cdot y_i)\right)\\
+				 \intertext{Distributiv lov}
 				 &= 2 \cdot \sum_{i=1}^n (x_i^2 \cdot a_{reg} - x_i \cdot y_i)\\
 				 &= \sum_{i=1}^n (x_i^2 \cdot a_{reg} - x_i \cdot y_i)\\
+				 \intertext{Kommutativ lov}
 				 &= \sum_{i=1}^n x_i^2 \cdot a_{reg} - \sum_{i=1}^n x_i \cdot y_i\\
+				 \intertext{Distributiv lov}
 				 &= a_{reg} \cdot \sum_{i=1}^n x_i^2 - \sum_{i=1}^n x_i \cdot y_i\\
-	     a_{reg} &=  \frac{\sum_{i=1}^n x_i \cdot y_i}{\sum_{i=1}^n x_i^2}
+				 \intertext{$a_{reg}$ isoleres}
+	     a_{reg} &=  \frac{\sum_{i=1}^n x_i \cdot y_i}{\sum_{i=1}^n x_i^2}.
 \end{align*}
 
 \begin{theorem}{Hældning for ret linje gennem givet punkt}{aregpoint}
@@ -500,6 +504,10 @@ Begyndelsesværdien er triviel at finde
 		\end{theorem}
 \end{itemize}
 
+\begin{definition}{Produkt af to følger}{listproduct}
+	$ (f \cdot g)(x) = f(x) \cdot g(x) $ 
+\end{definition}
+
 \begin{theorem}{Produktregel for differentiation}{produktdiff}
 	\[
 		\Delta (f \cdot g)(x) = \Delta f(x) \cdot g(x) + f(x + 1) \cdot \Delta g(x)
@@ -508,6 +516,7 @@ Begyndelsesværdien er triviel at finde
 \textbf{Bevis:}
 \begin{align*}
 	\Delta (f \cdot g)(x) &= \Delta (f(x) \cdot g(x))\\
+	\intertext{Ud fra definition af at gange to følger med hinanden}
 						  &= f(x + 1) \cdot g(x + 1) - f(x) \cdot g(x)\\
 						  &= f(x + 1) \cdot (g(x) + \Delta g(x)) - (f(x + 1) - \Delta f(x)) \cdot g(x)\\
 						  &= f(x + 1) \cdot g(x) + f(x + 1) \cdot \Delta g(x) \\

@@ -1,0 +1,58 @@
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{float}
+\graphicspath{ {./images/} }
+\usepackage{pdfpages}
+\usepackage{hyperref}
+\usepackage[danish]{babel}
+\usepackage{tikz}
+
+\usepackage{tcolorbox}
+
+\newcommand\gap[0]{\ensuremath{\hspace{1cm}}}
+
+\newcommand\vektor[2]{\ensuremath{
+	\begin{pmatrix}
+		#1\\
+		#2
+	\end{pmatrix}
+}
+}
+
+\newcommand\billede[3][1\textwidth]{\begin{figure}[H]
+	\caption{#3}
+	\includegraphics[width=#1]{#2}\label{#2}
+	\centering
+\end{figure}}
+
+\newcommand\cel{\ensuremath{^\circ\mathrm{C}}}
+\newcommand\grader{\ensuremath{^\circ}}
+\newcommand\dx{\:dx}
+
+\newcommand\lr{\ensuremath{\Leftrightarrow}}
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\C}{\ensuremath{\mathbb{C}}}
+\newcommand\dmht[1]{\frac{\partial}{\partial #1}}
+
+\newcommand\inccounter[1]{\setcounter{#1}{\arabic{#1}+1}}
+\newcommand\facit[1]{\underline{\underline{#1}}}
+
+\tcbuselibrary{theorems}
+
+\newcounter{opgave}
+\newtcbtheorem[use counter=opgave]{opgave}{Opgave}{separator sign none}{}
+\newtcbtheorem[number within=opgave, number format=\alph]{del}{Delopgave}%
+{theorem style=plain,colframe=white,coltitle=black,fontupper=\itshape}{}
+\newtcbtheorem{formel}{Formel}{theorem style=break,colframe=blue!70!white,coltitle=black!90!white,fonttitle=\itshape}{lm}
+
+\newtcbtheorem[number within=section]{eksempel}{Eksempel}{theorem style=plain, colframe=black, colback=white, %
+colbacktitle=blue!30!white,coltitle=black!90!white,fonttitle=\itshape}{ex}
+\newtcbtheorem[number within=section]{definition}{Definition}{theorem style=plain, colframe=black, colback=white, boxrule=0.25mm, sharp corners=all,%
+colbacktitle=blue!30!white,coltitle=black!90!white,fonttitle=\bfseries}{df}
+
+\newtcbtheorem[number within=section]{theorem}{Sætning}{sharp corners=all, theorem style=plain, colframe=black, colback=white,%
+colbacktitle=blue!30!white,coltitle=black!90!white,fonttitle=\bfseries, boxrule=0.25mm}{th}
+
+\newtcbtheorem[number within=section]{lemma}{Lemma}{sharp corners=all, theorem style=plain, colframe=black, colback=white,%
+colbacktitle=blue!30!white,coltitle=black!90!white,fonttitle=\bfseries, boxrule=0.25mm}{lm}

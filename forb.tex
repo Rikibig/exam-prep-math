@@ -584,7 +584,7 @@ standardfunktioner er kontinuerte.
 	\intertext{Der ganges med 1 på en sjov måde}
 					  &= \frac{f(g(x)) - f(g(x_0))}{x - x_0} \cdot 
 					  \frac{g(x) - g(x_0)}{g(x) - g(x_0)}\\
-		\intertext{Vha. brøkregneregel}
+	\intertext{Vha. brøkregneregel}
 					  &= \frac{f(g(x)) - f(g(x_0))}{g(x) - g(x_0)} \cdot 
 					  \frac{g(x) - g(x_0)}{x - x_0}\\
 					  &= d_{f,g(x_0)}(g(x)) \cdot d_{g,x_0}(x)
@@ -602,11 +602,41 @@ Da $x_0$ er vilkårlig gælder
 	(f \circ g)' = (f' \circ g) \cdot g'.
 \] 
 
-\begin{itemize}
-	\item Kædereglen
-	\item $(\ln{x})'$
-	\item $(x^n)'$, hvor $n\in\mathbb{C}$
-\end{itemize}
+\begin{theorem}{Afledte logaritme}{difflog}
+	$(\ln \cdot)' = \frac{1}{\cdot}$
+\end{theorem}
+
+\textbf{Bevis:}
+Med kædereglen
+\begin{align*}
+	e^{\ln x} &= x\\
+	\left( e^{\ln x} \right)' &= x'\\
+	x \cdot (\ln x)' &= 1\\
+	(\ln x)' &= \frac{1}{x}
+\end{align*}
+Da $x$ er vilkårlig
+\[
+	(\ln \cdot )' = \frac{1}{\cdot}
+\] 
+
+\begin{theorem}{Afledte $\cdot^{n}$}{xinte}
+	\[
+		(\cdot^n)' = n \cdot ^{n-1}
+	\] 
+\end{theorem}
+
+\textbf{Bevis:}
+\begin{align*}
+	(\ln{x^n})' &= (n \cdot \ln{x})'\\
+	(\ln{x^n})' &= n (\ln{x})'
+	\frac{1}{x^n} \cdot (x^n)'	&= n \cdot \frac{1}{x}\\
+	(x^n)' &= x^n \cdot n \cdot \frac{1}{x}\\
+		   &= n \cdot x^{n-1}
+\end{align*}
+Og da $x$ er vilkårlig
+\[
+	(\cdot^n)' = n \cdot ^{n-1}.
+\] 
 
 \section{Differential- og integralregning}
 \subsection{Giv en præsentation af en selvvalgt del af teorien for 

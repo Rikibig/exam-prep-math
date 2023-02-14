@@ -554,12 +554,17 @@ Begyndelsesværdien er triviel at finde
 
 \begin{eksempel*}{Hvordan ville jeg gøre?}
 	\begin{enumerate}
-		\item Bevise sætning \ref{th:chainrule}, inddrage viden om 
+		\item Bevise sætning \ref{th:chainrule}, inddrage viden om kontinuitet
+			og differentiabilitet,
+		\item Bevise sætning \ref{th:xinte} ved brug af sætning
+			\ref{th:difflog} og \ref{th:chainrule}
+		\item Bevise sætning \ref{th:difflog}
 	\end{enumerate}
 \end{eksempel*}
 
 \begin{definition}{Kontinuitet}{kont}
-	\[\lim_{x\to x_0} f(x) = f(x_0)\]	
+	Grænseværdien for $f(x)$ når $x$ går mod $x_0$ er $f(x_0)$
+	\[\lim_{x\to x_0} f(x) = f(x_0).\]	
 \end{definition}
 
 For at noget skal være kontinuert, skal, hvis x-værdierne er tæt på hinanden,
@@ -576,6 +581,8 @@ standardfunktioner er kontinuerte.
 \end{definition}
 
 \begin{definition}{Differentiabilitet}{diffhed}
+	Differentialkvotienten er grænseværdien for sekanthældningen for $f$ i
+	x-værdierne $x$ og $x_0$ når $x$ går mod $x_0$
 	\[f'(x_0) = \lim_{x \to x_0} d_f(x)\]
 \end{definition}
 
@@ -636,7 +643,7 @@ Da $x$ er vilkårlig
 \textbf{Bevis:}
 \begin{align*}
 	(\ln{x^n})' &= (n \cdot \ln{x})'\\
-	(\ln{x^n})' &= n (\ln{x})'
+	(\ln{x^n})' &= n (\ln{x})'\\
 	\frac{1}{x^n} \cdot (x^n)'	&= n \cdot \frac{1}{x}\\
 	(x^n)' &= x^n \cdot n \cdot \frac{1}{x}\\
 		   &= n \cdot x^{n-1}

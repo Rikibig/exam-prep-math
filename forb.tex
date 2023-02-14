@@ -3,6 +3,7 @@
 \input{preamble.tex}
 
 \usepackage{caption}
+\usepackage{mathtools}
 
 \usetikzlibrary {angles, quotes, through}
 \usetikzlibrary{calc, tikzmark}
@@ -551,6 +552,12 @@ Begyndelsesværdien er triviel at finde
 	\end{enumerate}
 \end{tcolorbox}
 
+\begin{eksempel*}{Hvordan ville jeg gøre?}
+	\begin{enumerate}
+		\item Bevise sætning \ref{th:chainrule}, inddrage viden om 
+	\end{enumerate}
+\end{eksempel*}
+
 \begin{definition}{Kontinuitet}{kont}
 	\[\lim_{x\to x_0} f(x) = f(x_0)\]	
 \end{definition}
@@ -559,6 +566,7 @@ For at noget skal være kontinuert, skal, hvis x-værdierne er tæt på hinanden
 så skal y-værdierne også være tæt på hinanden. Vi går ud fra, at alle
 standardfunktioner er kontinuerte.
 
+\newcommand\sek[2]{d_{#1,#2}}
 \begin{definition}{Sekanthældning}{sekant}
 	Sekanthældningen er hældningen for en ret linje gennem to forskellige
 	punkter på en funktion $f$.
@@ -638,37 +646,79 @@ Og da $x$ er vilkårlig
 	(\cdot^n)' = n \cdot ^{n-1}.
 \] 
 
-\section{Differential- og integralregning}
-\subsection{Giv en præsentation af en selvvalgt del af teorien for 
-differential- og integralregning}
-\begin{itemize}
-	\item Sekanthældning
-	\item Grænseværdier
-	\item Integraler
-\end{itemize}
+\begin{tcolorbox}
+	\section{Differential- og integralregning}
+	\tcblower
+	\begin{enumerate}
+		\item Giv en præsentation af en selvvalgt del af teorien for 
+			differential- og integralregning
+		\item Redegør for sammenhængen mellem stamfunktion og areal
+	\end{enumerate}
+\end{tcolorbox}
+Se definitioner i tidligere afsnit.
 
-\subsection{Redegør for sammenhængen mellem stamfunktion og areal}
-% TODO: tjek fortegn
-\begin{itemize}
-	\item Bevis $\int_a^b f dx = F(b)-F(a)$ 
+\begin{theorem}{Stamfunktion}{stamfn}
+	Lad $f$ være en kontinuert funktion defineret i intervallet $[a; b]$. Da er
+	$f$s stamfunktion, $F$,
+	\[
+		F(x) = \int_a^x f(t) \dx.		
+	\] 
+\end{theorem}
+% TODO: jeg er noget forvirret, for jeg ser hvad wikipedia mener, men vi har i
+% klassen fået præsenteret det geometriske forståelse... Hvordan viser man
+% dette bedst?
+
+\textbf{Bevis:}
+% TODO: forklar bedre, indsæt figur.
+Antag, at $A(x)$ måler "arealet" under en graf fra $-\infty$ til $x$. Arealet
+har her et fortegn, dvs. at hvis grafen er under nul, så tæller den negativt,
+medens hvis grafen er over nul så tæller den positivt.
+
+Ønsker man at finde arealet mellem to x-koordinater $x$ og $x_0$, kan dette
+lade sig gøre ved
+\[
+	A(x) - A(x_0).
+\] 
+Dette udtryk kan approximeres, men der kommer en fejl, kaldet $E$
+\[
+	A(x) - A(x_0) = f(x_0) \cdot (x-x_0) + E.
+\] 
+Der divideres med $x-x_0$.
 \begin{align*}
-	\intertext{Antag $f$ kontinuert}
-	\intertext{Antag en arealfunktion for $f$, $A(x)$, som finder areal mellem
-	0 og $x$. Ønskes nu arealet af et interval bestemt, kan man finde det ved}
-	\int_{x_0}^x f(x) dx &= A(x) - A(x_0)\gap\text{Overbevisende ved graf}\\
-	\intertext{Dette areal kan også estimeres ved $f$, som dog giver en mindre
-	fejl, $E$}
-	A(x) - A(x_0) &= f(x_0)\cdot (x-x_0) + E\\
-	f(x_0) &= \frac{A(x)-A(x_0)}{x-x_0} - \frac{E}{x-x_0}\\
-	 &= d_A(x) - \frac{E}{x-x_0}\\
-	 \intertext{Hvis det kan vises at $\frac{E}{x-x_0}$ går mod nul når $x$ går
-	 mod $x_0$, så er $A' = f$. Det vides om $\frac{E}{x-x_0}$}
-	\frac{E}{x-x_0} &\le \frac{(x-x_0)\cdot (f(x_0+t_{max})-f(x_0+t_{min}))}
-	{x-x_0}\\
-	&=f(x_0+t_{max})-f(x_0+t_{min})
+	\frac{A(x)-A(x_0)}{x-x_0} &= f(x_0) + \frac{E}{x-x_0}\iff\\
+	\sek{A}{x_0}(x) &= f(x_0) + \frac{E}{x-x_0} \xlongrightarrow[x \to x_0]{}\\
+	A'(x_0) &= \lim_{x \to x_0} f(x_0) + \frac{E}{x-x_0}
 \end{align*}
-	\item Herfra burde det være muligt at bevise færdig.
-\end{itemize} 
+
+Det undersøges nu, hvad der sker med $\frac{E}{x-x_0}$, når $x \to x_0$.
+Vi ved om $E$
+\[
+	E \le (f(x_h) - f(x_l))(x-x_0),
+\] 
+hvor $x_h$ og $x_l$ noterer x-koordinaten til henholdsvis det højeste og
+laveste punkt på grafen mellem $x$ og $x_0$. Men fordi $x_h$ og $x_l$ skal
+ligge mellem $x$ og $x_0$, så vil både $x_h$ og $x_l$ gå mod $x_0$ når $x$ går
+mod $x_0$. Med lidt omskrivninger fås altså
+\begin{align*}
+	\frac{E}{x-x_0} &\le f(x_h) - f(x_l) \xlongrightarrow[x \to x_0]{}\\
+					&= f(x_0) - f(x-0)\\
+					&= 0.
+\end{align*}
+Dvs.
+\begin{align*}
+	A'(x_0) &= \lim_{x \to x_0} f(x_0) + \frac{E}{x-x_0}\\
+		   &= f(x_0) + 0,
+\end{align*}
+fordi $f(x_0)$ ikke påvirkes af $x$. Altså er $A$ en stamfunktion til $f$.
+
+\begin{theorem}{Integralregningens hovedsætning}{mainruleint}
+	Givet en funktion $f$ der er kontinuert
+	\[
+		\int_a^b f(x) \dx = F(b) - F(a),
+	\]
+	hvor $F$ er en stamfunktion til $f$.
+\end{theorem}
+
 
 \section{Differensligninger}
 \subsection{Giv en præsentation af en selvvalgt del af teorien for differensligninger}

@@ -722,16 +722,66 @@ fordi $f(x_0)$ ikke påvirkes af $x$. Altså er $A$ en stamfunktion til $f$.
 	hvor $F$ er en stamfunktion til $f$.
 \end{theorem}
 
+\begin{tcolorbox}
+	\section{Differensligninger}
+	\tcblower
+	\begin{enumerate}
+		\item Giv en præsentation af en selvvalgt del af teorien for differensligninger.
+		\item Udled en løsningsformel til en selvvalgt type differensligning
+	\end{enumerate}
+\end{tcolorbox}
 
-\section{Differensligninger}
-\subsection{Giv en præsentation af en selvvalgt del af teorien for differensligninger}
-\begin{itemize}
-	\item Løsning er talfølge
-\end{itemize}
-\subsection{Udled en løsningsformel til en selvvalgt type differensligning}
-\begin{itemize}
-	\item Tal også noget om $\Delta f(x) = r\cdot  f(x)+p$
-\end{itemize}
+\begin{theorem}{Sum af potenser}{sumpot}
+	\[
+		\sum_{x=a}^b g^x = \frac{g^{b+1} - g^a}{g-1}.
+	\] 
+\end{theorem}
+
+\textbf{Bevis:}
+$g^x$ er en følge der integreres, ganske som i diskret analyse. Dermed skal der
+blot findes stamfølgen til $g^x$. Det er $\frac{1}{g-1} g^x$, udledningen
+overlades til læseren.
+
+Således gælder
+\begin{align*}
+	\sum_{x=a}^b g^x &= \frac{1}{g-1} g^{b+1} - \frac{1}{g-1} g^a\\
+					 &= \frac{g^{b+1} - g^a}{g-1}
+\end{align*}
+
+
+\begin{theorem}{Løsningsformel for $\Delta f(x) = r \cdot f(x) + p$}{}
+	\[
+		\Delta f(x) = r\cdot  f(x)+p, f(0) = b 
+		\implies f(x) = b \cdot (r + 1)^x + p \cdot \frac{(r+1)^x - 1}{r},
+	\] 
+	hvor $p, b \in \mathbb{R}$ og $r \ne 0$.
+\end{theorem}
+
+\textbf{Bevis:}
+Der definieres følgende for at undgå skrivekrampe $g = r+1$.
+
+\smallskip
+
+Første 4 elementer i $f$ skrives op.
+\begin{align*}
+	f(0) &= b\\
+	f(1) &= g \cdot b + p\\
+	f(2) &= g^2 \cdot b + gp + p\\
+	f(3) &= g^3 \cdot b + g^2p + gp + p
+\end{align*}
+Det indses dermed hurtigt at følgende gælder
+\[
+	f(x) = g^x \cdot b + \sum_{i=0}^{x-1} g^i \cdot p
+\] 
+Efter en omskrivning
+\[
+	f(x) = b \cdot g^x + p \cdot \sum_{i=0}^{x-1} g^i
+\] 
+Grundet sætning \ref{th:sumpot}
+\begin{align*}
+	f(x) &= b \cdot g^x + p \cdot \frac{g^x - 1}{g - 1} \\
+	&= b \cdot (r + 1)^x + p \cdot \frac{(r+1)^x - 1}{r}.
+\end{align*}
 
 \section{Binomial}
 \subsection{Giv en præsentation af selvvalgt del af teorien for sandsynlighedsregning med fokus på 

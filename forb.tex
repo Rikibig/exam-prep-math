@@ -468,7 +468,7 @@ Begyndelsesværdien er triviel at finde
 		\[
 			x^{\overline{n}} = \frac{x!}{(x-n)!}
 		\] 
-		\begin{eksempel}{x i n-streg}{}
+		\begin{eksempel}{x i n-streg}{x-i-n-streg}
 			$
 				7^{\overline{4}} = 7 \cdot 6 \cdot 5 \cdot 4.
 			$ 
@@ -485,9 +485,12 @@ Begyndelsesværdien er triviel at finde
 		\end{definition}
 	\item Man kan desuden definere integration
 		\begin{definition}{Integration}{dint}
+			Givet en talfølge defineret ved alle heltal i intervallet 
+			$[a;b],\: a,b\in\mathbb{Z}$, så er alle stamfølger givet ved
 			\[
-				F(x_0) = \sum f(x_0) = \sum_{-\infty}^{x_0} f(x) 
+				F(x_0) = \sum_a^{x_0} f(x) + k,
 			\]
+			hvor $k \in \mathbb{R}$.
 		\end{definition}
 	\item Det følger let at følgende gælder
 		\begin{theorem}{Integralregningens hovedsætning}{main}
@@ -529,7 +532,8 @@ Begyndelsesværdien er triviel at finde
 \begin{align*}
 	\Delta x^{\overline{n}} &= (x+1)^{\overline{n}} - x^{\overline{n}}\\
 	&= (x+1) \cdot x^{\overline{n-1}} - x^{\overline{n-1}} \cdot (x - (n-1))\\
-\intertext{Det er vigtigt at indse hvorfor den sidste faktor er $(x - (n-1)$.}
+\intertext{Det er vigtigt at indse hvorfor den sidste faktor er $(x - (n-1)$.
+	\textit{Se eksempel \ref{ex:x-i-n-streg}.}}
 	&= (x + 1 - x + (n - 1)) \cdot x^{\overline{n-1}}\\
 	&= n \cdot x^{\overline{n-1}}
 \end{align*}

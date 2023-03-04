@@ -783,9 +783,83 @@ Grundet sætning \ref{th:sumpot}
 	&= b \cdot (r + 1)^x + p \cdot \frac{(r+1)^x - 1}{r}.
 \end{align*}
 
-\section{Binomial}
-\subsection{Giv en præsentation af selvvalgt del af teorien for sandsynlighedsregning med fokus på 
-binomialfordelingen}
+%\newcommand\vbinom[2]{\ensuremath{\binom{#1}{#2}}} % I fald man kan lide "almen" notation.
+\newcommand\vbinom[2]{\ensuremath{\nobreak{K(#1,\,#2)}}} % I fald man ikke kan ...
+\begin{tcolorbox}
+	\section{Sandsynlighedsregning}
+	\tcblower
+	\begin{enumerate}
+		\item Giv en præsentation af selvvalgt del af teorien for
+			sandsynlighedsregning med fokus på binomialfordelingen.
+		\item Bevis formlen $\vbinom{n}{r} = \frac{n^{\overline{r}}}{r!}$ ved at løse
+			differensligningen \[\vbinom{n+1}{r} = \vbinom{n}{r-1} + \vbinom{n}{r}.\]
+	\end{enumerate}
+\end{tcolorbox}
+
+\begin{theorem}{Binomialkoefficient}{binkoeff}
+	Givet to ikke negative hele tal, $n$ og $r$, hvor $r \le n$ gælder det at
+	binomialkoefficienten $\vbinom{n}{r}$ er på formen
+	\[
+		\vbinom{n}{r} = \frac{n^{\overline{r}}}{r!}.
+	\] 
+	\vbinom{n}{r} udtales "\textit{n} vælg \textit{r}".
+\end{theorem}
+
+\textbf{Bevis:}
+Følgende differensligning indføres
+\[
+	\vbinom{n+1}{r} = \vbinom{n}{r-1} + \vbinom{n}{r}.
+\] 
+
+Det viser sig at være smart at isolere \vbinom{n}{r-1}.
+\begin{align*}
+	\vbinom{n}{r-1} &= \vbinom{n+1}{r} - \vbinom{n}{r}\\
+	\intertext{\vbinom{n}{r} kaldes for det $n$'te element i den $r$'te følge}
+	f_{r-1}(n) &= f_{r}(n+1) - f_{r}(n)\\
+	\intertext{Idé fra diskret analyse indføres}
+	f_{r-1}(n) &= \Delta f_{r}(n)
+\end{align*}
+
+Det er et super centralt resultat, for nu kan alle $f_{r}$ findes. Det skyldes
+at $f_0(n)$ er kendt, og en hvilken som helst $f_r(n)$ kan findes ved at
+integrere diskret $r$ gange med pluskonstant 0, og evaluere i $n$. Bevis ved
+induktion.
+
+\smallskip
+
+\textbf{Startbetingelse:} $f_0(n) = 1$, da \vbinom{n}{0} er 1, fordi der kun kan
+vælges nul elementer på en måde.
+
+\textbf{Induktionsskridt:} Under antagelse af at $f_r(n) =
+\frac{n^{\overline{r}}}{r!}$, vis da at $f_{r+1}(n)
+=\frac{n^{\overline{r+1}}}{(r+1)!}$.
+
+Idéen fra diskret analyse bruges nu
+\begin{align*}
+	f_{r}(n) 
+	   &= \frac{n^{\overline{r}}}{r!}\\
+	   &= \frac{(r+1) \cdot n^{\overline{r}}}{(r+1)!}\\
+	   &= \frac{\Delta n^{\overline{r+1}}}{(r+1)!}\\
+	   &= \Delta\frac{n^{\overline{r+1}}}{(r+1)!}\\
+	   &= \Delta f_{r+1}(n)
+\end{align*}
+Det vil sige
+\begin{align*}
+	\Delta f_{r+1}(n) &= \Delta\frac{n^{\overline{r+1}}}{(r+1)!}\\
+	f_{r+1}(n) &= \frac{n^{\overline{r+1}}}{(r+1)!}
+\end{align*}
+Dermed er induktionsbeviset afsluttet.
+
+\smallskip
+
+Da det nu er vist at $f_r(n) = \frac{n^{\overline{r}}}{r!}$, og $f_r(n) =
+\vbinom{n}{r}$, da er differensligningen løst
+\[
+	\vbinom{n}{r} = \frac{n^{\overline{r}}}{r!}.
+\] 
+
+\hrulefill
+
 \begin{itemize}
 	\item Tæthedsfunktioner
 	\item Bernoulli
@@ -795,9 +869,6 @@ binomialfordelingen}
 			K(n + 1, r) = K(n, r-1) + K(n, r)
 		\]
 \end{itemize}
-
-
-Løs K(n,r) ved at indse at der differentieres.
 
 \section{Statistik}
 \subsection{Giv en præsentation af en selvvalgt del af teorien for hypotesetest}

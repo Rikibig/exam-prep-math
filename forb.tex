@@ -858,17 +858,79 @@ Da det nu er vist at $f_r(n) = \frac{n^{\overline{r}}}{r!}$, og $f_r(n) =
 	\vbinom{n}{r} = \frac{n^{\overline{r}}}{r!}.
 \] 
 
-\hrulefill
+\begin{definition}{Tæthedsfunktion}{thickfunc}
+	En funktion $f$ defineret i udfaldsmængden for en stokastisk variabel $X$ givet
+	ved intervallet $[a; b]$ er en tæthedsfunktion hvis og kun hvis den
+	opfylder
+	\[
+		f(x) \ge 0 \qquad \text{og} \qquad \int_a^b f(x) \dx = 1.
+	\] 
+	Tæthedsfunktionen angiver sandsynligheden for et givent udfald
+	\[
+		P(X=x) = f(x).
+	\] 
+\end{definition}
 
-\begin{itemize}
-	\item Tæthedsfunktioner
-	\item Bernoulli
-	\item Binomialfordeling: Mange bernoulli
-	\item K(n,r)
-		\[
-			K(n + 1, r) = K(n, r-1) + K(n, r)
-		\]
-\end{itemize}
+\begin{definition}{Bernoullifordeling}{bern}
+	En bernoullifordelt stokastisk variabel har tæthedsfunktionen
+	\[
+		f(x) = 
+		\begin{cases} 
+			p & x = 1\\
+			(1 - p) & x = 0\\
+			0 & \text{ellers}
+		\end{cases}
+	.\] 
+\end{definition}
+
+\begin{theorem}{Binomialfordelingen}{binomford}
+	%TODO Sandsynlighed for succes?
+	Givet $n$ bernoullifordelte stokastiske variable, $X$, med sandsynlighed
+	for succes $p$, defineres en binomialfordelt stokastisk variabel som
+	\[
+		Y = \sum_{i=1}^{n} X_i
+	,\] 
+	eller bare
+	\[
+		Y \sim bin(n, p).
+	\] 
+	Så gælder
+	\[
+		P(Y = r) = p^r \cdot (1 - p)^{n-r} \cdot \vbinom{n}{r}.
+	\] 
+\end{theorem}
+
+\textbf{Bevis:}
+Hvis en bernoullifordelt stokastisk variabel er lig med 1, kaldes udfaldet for
+en succes, $s$, ellers fiasko, $f$. For at spare på blækket skrives
+$P(s\,\text{og}\,f)$ som $P(sf)$. Således fås
+\begin{align*}
+	P(Y = r) &= P(\underbrace{ss \dotso s}_r \underbrace{ff \dotso f}_{n-r})\\ 
+			 &+ P(\underbrace{ss \dotso s}_{r-1} \underbrace{ff \dotso f}_{n-r}s)\\
+			 &+ P(\underbrace{ss \dotso s}_{r-2} \underbrace{ff \dotso f}_{n-r}ss)\\
+			 &+ \dotsb
+\end{align*}
+hvor summeringen forsætter med andre permutationer af $r$ successer og $(n-r)$
+fiaskoer. Det viser sig, at alle disse permutationer er ens, som følge af
+multiplikationsprincippet og den kommutative lov for gange. Dvs.
+\begin{align*}
+	P(Y = r) &= P(\underbrace{ss \dotso s}_r \underbrace{ff \dotso f}_{n-r}) \cdot \text{værdi}.\\
+	\intertext{Herfra kan sandsynligheden beregnes}
+			 &= \underbrace{P(s) \cdot P(s) \dotsm P(s)}_r \cdot 
+			 \underbrace{P(f) \cdot P(f) \dotsm P(f)}_{n-r} \cdot \text{værdi}\\
+			 &= P(s)^r \cdot P(f)^{n-r} \cdot \text{værdi}\\
+			 &= p^r \cdot (1-p)^{n-r} \cdot \text{værdi}.
+\end{align*}
+
+
+Nu mangles det blot at finde hvor mange forskellige permutationer der er. For at
+finde det, kan man forestille sig at man blandt de $n$ bernoullifordelte
+stokastiske variable, så vælges $r$ af dem til at være successer. Dette kan, per
+vores binomialkoefficient gøres på netop \vbinom{n}{r} måder. Altså fås
+\[
+	P(Y = r) = p^r \cdot (1-p)^{n-r} \cdot \vbinom{n}{r},
+\] 
+som var det, der ønskedes vist. \qedsymbol
 
 \section{Statistik}
 \subsection{Giv en præsentation af en selvvalgt del af teorien for hypotesetest}

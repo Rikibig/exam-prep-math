@@ -8,6 +8,9 @@
 \title{Eksamensnoter}
 \author{Ricardt Riis}
 
+\newcounter{opgavecnt}
+\newcommand{\opg}[1]{\stepcounter{opgavecnt}\textit{Opgave \arabic{opgavecnt}: }#1}
+
 \begin{document}
 
 \maketitle
@@ -21,9 +24,11 @@ I det følgende vil overskriften angive hvilket spørgsmål der svares på. Da d
 er bedst at svare på begge spørgsmål "samtidigt" eller i det mindste have en
 nogenlunde flydende overgang mellem de to spørgsmål, virker det gavnligst at
 beskrive spørgsmålene, og dernæst under \textit{EN} overskrift besvare
-spørgsmålene.\\
-Bemærk desuden, at jeg kun har ringe forståelse af hvad Sætning og Definition
-betyder i streng matematisk konstekst.
+spørgsmålene.
+
+Der er desuden lagt en række opgaver ind; materialet kan læses uden at løse
+opgaverne, men for en dybere forståelse anbefales det at løse dem, som man ikke
+umiddelbart kan løse.
 
 \begin{tcolorbox}
 	\section{Funktioner}
@@ -47,10 +52,10 @@ Her kan man komme ind på følgende:
 	\item $t$ kaldes normalt \texttt{parameterværdi}.
 	\item Præsenteres en vektorfunktion grafisk, benyttes en banekurve.\\
 		\textit{Bemærk}: En banekurve viser ikke alt ved en vektorfunktion. Fx.
-		er banekurverne for $\vektor{t^3}{t^3}$ og $\vektor{t}{t}$ de samme.
+		er banekurverne for $\vektor{t^3}{t^3}$ og $\vektor{t}{t}$ ens.
 	\item Den afledede af en vektorfunktion kan bestemmes således
 		\[
-			\vec{v}\,'(t) = \vektor{x(t)}{y(t)}' = \vektor{x(t)'}{y(t)'}
+			\vec{v}\,'(t) = \vektor{x(t)}{y(t)}' = \vektor{x'(t)}{y'(t)}
 		\] 
 		\textit{I det følgende vil afledte funktioner skrives således}
 		\[
@@ -92,15 +97,17 @@ Her kan man komme ind på følgende:
 	\end{center}
 \end{definition}
 
-\begin{lemma}{Idiotformlen}{idformel}
-	\( \cos^2{t} + \sin^2{t} = 1 \)	
-\end{lemma}
+\opg{Hvilke tal $\phi$ opfylder $\cos(x) = \cos(x + \phi)$?}
 
-\begin{definition}{}{}
-	\[
-		\vec{r}(t) = \vektor{\cos{t}}{\sin{t}}
-	\] 
-\end{definition}
+\opg{Disse tal fortæller noget om perioden af cosinus. Hvad?}
+
+\opg{Hvilke tal $\phi$ opfylder $\cos(x) = \sin(x + \phi)$?}
+
+\begin{theorem}{Idiotformlen}{idformel}
+	\( \cos^2{t} + \sin^2{t} = 1 \)	
+\end{theorem}
+
+\opg{Vis sætningen.}
 
 \begin{theorem}{Afledte cosinus og sinus}{cossindiff}
 	\begin{align*}
@@ -109,7 +116,11 @@ Her kan man komme ind på følgende:
 	\end{align*}
 \end{theorem}
 
-\textbf{Bevis:}
+\begin{proof}
+Lad
+\[
+	\vec{r}(t) = \vektor{\cos{t}}{\sin{t}}.
+\] 
 Det ønskes at finde $\dot{\vec{r}}(t)$, da vi i så fald kan bevise sætning
 \ref{th:cossindiff}.
 
@@ -122,7 +133,7 @@ også er $2\pi$ ved vi om farten af $\vec{r}$
 \[
 	|\dot{\vec{r}}(t)| = 1.
 \] 
-\textit{Bemærk, at længden af $\vec{r}$ også er 1 (jf. lemma \ref{lm:idformel}).}\\
+\textit{Bemærk, at længden af $\vec{r}$ også er 1 (jf. sætning \ref{th:idformel}).}\\
 Det vides om tangenter til punkter på en cirkel står ret på stedvektoren til
 punktet. Dermed gælder
 \[
@@ -134,12 +145,10 @@ Derfor
 						\vektor{\cos'}{\sin'}	&= \vektor{-\sin}{\cos}.
 \end{align*}
 Da lighedstegnet gælder koordinatvis, er beviset gennemført.
+\end{proof}
 
-\begin{lemma}{Tangens}{tan}
-	\(
-		\tan = \frac{\sin}{\cos}
-	\) 
-\end{lemma}
+\opg{Vis at tangenten til et punkt på cirklen står vinkelret på stedvektoren
+til punktet.}
 
 \begin{theorem}{Afledede tangens}{difftan}
 	\(
@@ -147,15 +156,20 @@ Da lighedstegnet gælder koordinatvis, er beviset gennemført.
 	\) 
 \end{theorem}
 
-\textbf{Bevis:}
+\begin{proof}
 \begin{align*}
 	\tan' &= \left(\frac{\sin}{\cos}\right)'\\
 		  &= \left(\sin \cdot \frac{1}{\cos}\right)'\\
 		  &= \cos \cdot \frac{1}{\cos} + \sin \cdot \left(\frac{1}{\cos}\right)'\\
 		  &= 1 + \sin \cdot \left(-\frac{1}{\cos^2}\right) \cdot (-\sin)\\
 		  &= 1 + \frac{\sin^2}{\cos^2}\\
-		  &= \tan^2 + 1
+		  &= \tan^2 + 1.\qedhere
 \end{align*}
+\end{proof}
+
+\opg{Overvej hvorfor tangens er $\frac{\sin}{\cos}$.}
+
+\opg{Overvej hvad vektorfunktioner ellers kan bruges til.}
 
 \begin{tcolorbox}
 	\section{Funktioner}
@@ -181,7 +195,8 @@ Da lighedstegnet gælder koordinatvis, er beviset gennemført.
 \begin{theorem}{Logaritme laver gange om til plus}{loggangeplus}
 	\[\log_A{B \cdot C} = \log_AB + \log_AC\]
 \end{theorem}
-\textbf{Bevis:}
+
+\begin{proof}
 \begin{align*}
 	\log_A{B \cdot C} &= \log_AB + \log_AC \iff\\
 \intertext{Der opløftes i A for at potensregneregler kan benyttes}
@@ -189,35 +204,41 @@ Da lighedstegnet gælder koordinatvis, er beviset gennemført.
 \intertext{Føromtalte potensregneregel benyttes}
 						  &= A^{\log_AB} \cdot A^{\log_AC} \iff\\
 \intertext{$A^{\log_A}$ går ud}
-	B \cdot C &= B \cdot C
+	B \cdot C &= B \cdot C\qedhere
 \end{align*}
+%TODO vend rækkefølgen
+\end{proof}
 
 \begin{theorem}{Logaritmeregneregel}{logpotenstilgange}
 	$\log_AB^C = C \cdot \log_AB$
 \end{theorem}
-\textbf{Bevis:}
+
+\begin{proof}
 Opløftning er det samme som gentagen gange
 \begin{align*}
 	\log_AB^C &= \log_A{\underbrace{B \cdot B \cdots B}_{C\text{ gange}}}\\
-\intertext{Jævnfør sætning \ref{th:loggangeplus} så kan man skrive}
+\intertext{Jævnfør sætning \ref{th:loggangeplus}, kan man skrive}
 			  &= \underbrace{\log_A{B} + \log_A{B} + \cdots + \log_A{B}}_{C\text{ gange}}\\
 \intertext{Da der lægges sammen C gange, og gange er gentaget plus, så gælder}
-			  &= C \cdot \log_AB
+			  &= C \cdot \log_AB.\qedhere
 \end{align*}
+\end{proof}
 
 \begin{theorem}{Logaritmeregneregel}{logswap}
 	$A^{\log_BC} = C^{\log_BA}$.
 \end{theorem}
-\textbf{Bevis:}
+
+\begin{proof}
 Reglen opskrives
 \begin{align*}
 	A^{\log_BC} &= C^{\log_BA} \iff\\
 \intertext{Vi gør på en smart måde ingenting}
 	B^{\log_B{A^{\log_BC}}} &= B^{\log_B{C^{\log_BA}}} \iff\\
 \intertext{Ifølge sætning \ref{th:logpotenstilgange} så kan vi}
-	B^{\log_BC \cdot \log_B{A}} &= B^{\log_BA \cdot \log_B{C}}
+	B^{\log_BC \cdot \log_B{A}} &= B^{\log_BA \cdot \log_B{C}}\qedhere
 \end{align*}
-Da der har været ensbetydende pile er beviset fuldført.
+%TODO gør det mere intuitivt.
+\end{proof}
 
 \begin{definition}{Plusfølge}{plusfølge}
 	En plusfølge lægger altid et bestemt tal til for hvert skridt i følgen.
@@ -237,7 +258,7 @@ Da der har været ensbetydende pile er beviset fuldført.
 \begin{theorem}{Gangefølge - Gangefølge}{gangegange}
 	To gangefølger,
 	\begin{center}
-		$c\cdot \Rho x^n$ og $d\cdot \Rho y^n$,
+		$c\cdot \Rho x^n$ og $d\cdot \Rho y^n$, $c \ne 0 \land \Rho x \ne 0$
 	\end{center}
 	giver altid anledning til en potenssammenhæng
 	\[
@@ -246,11 +267,11 @@ Da der har været ensbetydende pile er beviset fuldført.
 	\textit{Bemærk at $c^{\log_{\Rho x}{\Rho y}}$ er 1, hvis x-følgen starter ved 1.}
 \end{theorem}
 
+\begin{proof}
 y ønskes at kunne blive fundet ud fra vilkårlig x. Til det formål skal vi kende
 $n$.
 \begin{align*}
 	x &= c\cdot \Rho x^n\\
-\intertext{Der divideres med c, log rho x tages}
 	n &= \log_{\Rho x}{\frac{x}{c}}
 \end{align*}
 
@@ -260,8 +281,9 @@ Denne $n$ kan indsættes i udtrykket for $y_n$, så enhver y kan findes.
 \intertext{Per sætning \ref{th:logpotenstilgange}}
 	&= d\cdot \left(\frac{x}{c}\right)^{\log_{\Rho x}{\Rho y}}\\
 \intertext{Potensregneregel}
-	&= \frac{d}{c^{\log_{\Rho x}{\Rho y}}}\cdot x^{\log_{\Rho x}{\Rho y}}
+	&= \frac{d}{c^{\log_{\Rho x}{\Rho y}}}\cdot x^{\log_{\Rho x}{\Rho y}}.\qedhere
 \end{align*}
+\end{proof}
 
 \begin{figure}[H]
 	\centering
@@ -269,6 +291,14 @@ Denne $n$ kan indsættes i udtrykket for $y_n$, så enhver y kan findes.
 	\includegraphics[width=0.8\textwidth]{gangegange}
 	\label{gangegange}
 \end{figure}
+
+\opg{Overvej hvorfor overvejelser om plus- og gangefølger er interessante.}
+
+\opg{Vis hvordan $y$ kan beskrives i en gange-plusfølge, plus-gangefølge og
+plus-plusfølge. \textit{Hint:} Benyt samme idé som i ovenstående bevis.}
+
+\opg{Kan alle følger kombineres med samme idé? \textit{Hint:} Overvej hvis $x$
+beskrives ved $n^2$.}
 
 \begin{tcolorbox}
 	\section{Funktioner}
@@ -299,11 +329,11 @@ Denne $n$ kan indsættes i udtrykket for $y_n$, så enhver y kan findes.
 \end{eksempel*}
 
 \begin{definition}{Partiel afledning}{pderi}
-	En funktion af to variable, $f(x, y)$ kan afledes partielt
+	En funktion af to variable, $f(x, y)$, kan afledes partielt
 	\[
 		\frac{\partial}{\partial x} f(x, y) = \lim_{h\rightarrow0} \frac{f(x+h, y) - f(x, y)}{h}.
 	\] 
-	Man kan gøre det samme med y.
+	Der afledes tilsvarende med hensyn til $y$.
 \end{definition}
 
 \begin{eksempel*}{Partiel afledning}{}
@@ -317,6 +347,8 @@ Denne $n$ kan indsættes i udtrykket for $y_n$, så enhver y kan findes.
 	\] 
 \end{eksempel*}
 
+\opg{Hvad er den afledede med hensyn til $y$?}
+
 \begin{definition}{Gradient}{grad}
 	Gradienten til en funktion af to variable, noteret $\nabla$ (nabla), defineres ved
 	\[
@@ -325,6 +357,8 @@ Denne $n$ kan indsættes i udtrykket for $y_n$, så enhver y kan findes.
 	\] 
 \end{definition}
 
+\opg{Bestem $\nabla f(3, 5)$.}
+
 \begin{definition}{Stationære punkter}{station}
 	Et stationært punkt til en funktion $f(x, y)$ defineres ved et punkt 
 	$(x_0, y_0)$ hvor $x_0$ og $y_0$ opfylder
@@ -332,6 +366,17 @@ Denne $n$ kan indsættes i udtrykket for $y_n$, så enhver y kan findes.
 		\nabla f(x_0, y_0) = \vec{0}.
 	\] 
 \end{definition}
+
+\begin{definition}{Kvadratsum}{kvsum}
+	Givet en funktion $f: \mathbb{R} \to \mathbb{R}$ og $n$ datapunkter på formen
+	$(x_i, y_i), x_i, y_i \in \mathbb{R}$, kan kvadratsummen beskrives ved
+	\[
+		\sum_{i=1}^n (f(x_i) - y_i)^2.
+	\] 
+\end{definition}
+
+\opg{Overvej hvilken effekt det har, at forskellen mellem forventningen ($f$)
+og det rigtige resultat ($y_i$) sættes i anden.}
 
 \begin{theorem}{Proportionalitetsregression}{propreg}
 	Den bedste hældning for en ret linje ved brug af mindste kvadraters metode
@@ -343,7 +388,7 @@ Denne $n$ kan indsættes i udtrykket for $y_n$, så enhver y kan findes.
 	til det i-te punkt, og $y_i$ tilsvarende er y-koordinaten til det i-te punkt.
 \end{theorem}
 
-\textbf{Bevis:}
+\begin{proof}
 Først opskrives kvadratsummen for en given hældning
 \[
 	KS(a) = \sum_{i=1}^n (x_i \cdot a - y_i)^2.
@@ -361,14 +406,16 @@ mindst. Der differentieres og sættes lig nul.
 				 &= \sum_{i=1}^n \left(2(x_i^2 \cdot a_{reg} - x_i \cdot y_i)\right)\\
 				 \intertext{Distributiv lov}
 				 &= 2 \cdot \sum_{i=1}^n (x_i^2 \cdot a_{reg} - x_i \cdot y_i)\\
+				 \intertext{Da venstresiden er lig nul, divideres med 2}
 				 &= \sum_{i=1}^n (x_i^2 \cdot a_{reg} - x_i \cdot y_i)\\
 				 \intertext{Kommutativ lov}
 				 &= \sum_{i=1}^n x_i^2 \cdot a_{reg} - \sum_{i=1}^n x_i \cdot y_i\\
 				 \intertext{Distributiv lov}
 				 &= a_{reg} \cdot \sum_{i=1}^n x_i^2 - \sum_{i=1}^n x_i \cdot y_i\\
 				 \intertext{$a_{reg}$ isoleres}
-	     a_{reg} &=  \frac{\sum_{i=1}^n x_i \cdot y_i}{\sum_{i=1}^n x_i^2}.
+	     a_{reg} &=  \frac{\sum_{i=1}^n x_i \cdot y_i}{\sum_{i=1}^n x_i^2}.\qedhere
 \end{align*}
+\end{proof}
 
 \begin{theorem}{Hældning for ret linje gennem givet punkt}{aregpoint}
 	Den bedste hældning for en ret linje gennem $(x_0, y_0)$ er givet ved
@@ -379,11 +426,14 @@ mindst. Der differentieres og sættes lig nul.
 	til det i-te punkt, og $y_i$ tilsvarende er y-koordinaten til det i-te punkt.
 \end{theorem}
 
-\textbf{Bevis:}
+\begin{proof}
 Koordinatsystemet forskydes således at punktet $(x_0, y_0)$ kommer til at ligge
 i origo. Nu kan sætning \ref{th:propreg} benyttes. For at forskyde
 koordinatsystemet trækkes $x_0$ fra x-koordinaten for hvert punkt og $y_0$ fra
 y-koordinaten for hvert punkt.
+\end{proof}
+
+\opg{Hvorfor kan koordinatsystemet forskydes på denne måde?}
 
 \begin{theorem}{Lineær regression}{linreg2}
 	Givet en liste af punkter (x, y), så kan man finde den bedste rette linje
@@ -401,7 +451,7 @@ y-koordinaten for hvert punkt.
 	gennemsnits y-koordinaten.
 \end{theorem}
 
-\textbf{Bevis:}
+\begin{proof}
 Kvadratsummen for den lineære regression opskrives
 \[
 	KS(a, b) = \sum_{i=1}^n (x_i \cdot a + b - y_i)^2.
@@ -410,11 +460,13 @@ Da det ønskes at finde minimum for funktionen, og et minimum er et stationært
 punkt, og der kun er et stationært punkt for funktionen, som også er et
 minimum, kan definition \ref{df:station} bruges.
 
+\opg{Hvorfor er der kun et stationært punkt, som er et minimum?}
+
 \smallskip
 
 If. definition \ref{df:grad}
 \[
-	\frac{\partial}{\partial a} KS(a_{reg}, b_{reg}) = 0 \land
+	\frac{\partial}{\partial a} KS(a_{reg}, b_{reg}) = 0 \: \land \:
 	\frac{\partial}{\partial b} KS(a_{reg}, b_{reg}) = 0.
 \] 
 Ligningssystemet løses, først afledes kvadratsumsfunktion med hensyn til
@@ -426,6 +478,8 @@ begyndelsesværdien.
 	  &= 2 \cdot \sum_{i=1}^n (x_i \cdot a_{reg} + b_{reg} - y_i)\\
 	  &= n \cdot b_{reg} + \sum_{i=1}^n (x_i \cdot a_{reg} - y_i)\\
 	  &= b_{reg} + \sum_{i=1}^n (\frac{x_i}{n} \cdot a_{reg} - \frac{y_i}{n})\\
+	  \intertext{Det indføres, at $\overline{x} = \sum_{i=1}^n \frac{x_i}{n}$.
+		  \opg{Overvej hvad $\overline{x}$ betyder.}}
 	  &= b_{reg} + (\overline{x} \cdot a_{reg} - \overline{y})\\
 	  \intertext{Nu kan enten $a$ eller $b$ isoleres, og der kan differentieres
 		  partielt med hensyn til den anden variabel, ligningssystemet kan
@@ -440,8 +494,17 @@ sætning \ref{th:aregpoint}
 \] 
 Begyndelsesværdien er triviel at finde
 \[
-	b_{reg} = \overline{y} - a_{reg} \cdot \overline{x}.
+	b_{reg} = \overline{y} - a_{reg} \cdot \overline{x}.\qedhere
 \] 
+\end{proof}
+
+\opg{Fortsæt beviset uden brug af smarte indsigter ved at aflede mht. $a_{reg}$
+og løse det efterfølgende ligningssystem.}
+
+\opg{Overvej hvor man bruger lineær regression.}
+
+\opg{Overvej hvilke konsekvenser det har, at regressionen bruger minste
+kvadraters metode.}
 
 \begin{tcolorbox}
 	\section{Differential- og integralregning}
@@ -473,6 +536,7 @@ Begyndelsesværdien er triviel at finde
 				7^{\overline{4}} = 7 \cdot 6 \cdot 5 \cdot 4.
 			$ 
 		\end{eksempel}
+		\opg{Beregn $6^{\overline{3}}$.}
 	\item Det kaldes at differentiere når man trækker nabo-elementer fra hinanden
 		\[
 			\Delta f: [2, 2, -1, 5].
@@ -498,6 +562,8 @@ Begyndelsesværdien er triviel at finde
 				\sum_a^b f(x) = F(b + 1) - F(a)
 			\]
 		\end{theorem}
+		\opg{Vis integralregningens hovedsætning for følger. \textit{Hint:}
+		Brug defintion \ref{df:dint}.}
 \end{itemize}
 
 \begin{definition}{Produkt af to følger}{listproduct}
@@ -509,7 +575,8 @@ Begyndelsesværdien er triviel at finde
 		\Delta (f \cdot g)(x) = \Delta f(x) \cdot g(x) + f(x + 1) \cdot \Delta g(x)
 	\] 
 \end{theorem}
-\textbf{Bevis:}
+
+\begin{proof}
 \begin{align*}
 	\Delta (f \cdot g)(x) &= \Delta (f(x) \cdot g(x))\\
 	\intertext{Ud fra definition af at gange to følger med hinanden}
@@ -519,8 +586,11 @@ Begyndelsesværdien er triviel at finde
 						  &\gap- f(x + 1) \cdot g(x) + \Delta f(x) \cdot g(x)\\
 						  &= \tcbhighmath{f(x + 1) \cdot g(x)} + f(x + 1) \cdot \Delta g(x) \\
 						  &\gap\tcbhighmath{- f(x + 1) \cdot g(x)} + \Delta f(x) \cdot g(x)\\
-						  &= f(x + 1) \cdot \Delta g(x) + \Delta f(x) \cdot g(x)
+						  &= f(x + 1) \cdot \Delta g(x) + \Delta f(x) \cdot g(x)\qedhere
 \end{align*}
+\end{proof}
+
+\opg{Undersøg hvad der sker, hvis skridtlængden går mod 0.}
 
 \begin{theorem}{Differentiation af $x^{\overline{n}}$}{diffxn}
 	Givet konstant $n$ og variabel $x$ gælder
@@ -528,15 +598,17 @@ Begyndelsesværdien er triviel at finde
 		\Delta x^{\overline{n}} = n \cdot x^{\overline{n-1}}.
 	\]
 \end{theorem}
-\textbf{Bevis:}
+\begin{proof}
 \begin{align*}
 	\Delta x^{\overline{n}} &= (x+1)^{\overline{n}} - x^{\overline{n}}\\
 	&= (x+1) \cdot x^{\overline{n-1}} - x^{\overline{n-1}} \cdot (x - (n-1))\\
-\intertext{Det er vigtigt at indse hvorfor den sidste faktor er $(x - (n-1)$.
-	\textit{Se eksempel \ref{ex:x-i-n-streg}.}}
 	&= (x + 1 - x + (n - 1)) \cdot x^{\overline{n-1}}\\
-	&= n \cdot x^{\overline{n-1}}
+	&= n \cdot x^{\overline{n-1}}.\qedhere
 \end{align*}
+\end{proof}
+
+\opg{Overvej hvorfor den sidste faktor er $(x - (n-1))$. \textit{Hint:} Se
+eksempel \ref{ex:x-i-n-streg}.}
 
 \begin{tcolorbox}
 	\section{Differential- og integralregning}
@@ -564,15 +636,18 @@ Begyndelsesværdien er triviel at finde
 \end{definition}
 
 For at noget skal være kontinuert, skal, hvis x-værdierne er tæt på hinanden,
-så skal y-værdierne også være tæt på hinanden. Vi går ud fra, at alle
+y-værdierne også være tæt på hinanden. Vi går ud fra, at alle
 standardfunktioner er kontinuerte.
+
+\opg{\textit{Temmelig svær, i væsentlig grad uden for pensum}, Vis at
+standardfunktionerne er kontinuerte.}
 
 \newcommand\sek[2]{d_{#1,#2}}
 \begin{definition}{Sekanthældning}{sekant}
 	Sekanthældningen er hældningen for en ret linje gennem to forskellige
-	punkter på en funktion $f$.
+	punkter på en funktion $f$,
 	\[
-		d_{f,x_0}(x) = \frac{f(x) - f(x_0)}{x - x_0}
+		d_{f,x_0}(x) = \frac{f(x) - f(x_0)}{x - x_0}.
 	\] 
 \end{definition}
 
@@ -582,13 +657,15 @@ standardfunktioner er kontinuerte.
 	\[f'(x_0) = \lim_{x \to x_0} d_f(x)\]
 \end{definition}
 
+\opg{Hvorfor er funktionen $f(x) = |x|$ kontinuert i $x = 0$, men ikke differentiabel?}
+
 \begin{theorem}{Kædereglen}{chainrule}
 	\[
 		(f \circ g)' = (f' \circ g) \cdot g'
 	\] 
 \end{theorem}
 
-\textbf{Bevis:}
+\begin{proof}
 \begin{align*}
 	d_{f \circ g,x_0}(x) &= \frac{(f \circ g)(x) - (f \circ g)(x_0)}{x - x_0}\\
 					  &= \frac{f(g(x)) - f(g(x_0))}{x - x_0}\\
@@ -610,14 +687,19 @@ Grundet viden om sekanthældninger og grænseværdier
 \end{align*}
 Da $x_0$ er vilkårlig gælder
 \[
-	(f \circ g)' = (f' \circ g) \cdot g'.
+	(f \circ g)' = (f' \circ g) \cdot g'.\qedhere
 \] 
+\end{proof}
+
+\opg{Afled $e^{5x^2}$.}
+
+\opg{Overvej hvornår dette bevis ikke gælder.}
 
 \begin{theorem}{Afledte logaritme}{difflog}
 	$(\ln \cdot)' = \frac{1}{\cdot}$
 \end{theorem}
 
-\textbf{Bevis:}
+\begin{proof}
 Med kædereglen
 \begin{align*}
 	e^{\ln x} &= x\\
@@ -627,8 +709,9 @@ Med kædereglen
 \end{align*}
 Da $x$ er vilkårlig
 \[
-	(\ln \cdot )' = \frac{1}{\cdot}
+	(\ln \cdot )' = \frac{1}{\cdot}.\qedhere
 \] 
+\end{proof}
 
 \begin{theorem}{Afledte $\cdot^{n}$}{xinte}
 	\[
@@ -636,7 +719,7 @@ Da $x$ er vilkårlig
 	\] 
 \end{theorem}
 
-\textbf{Bevis:}
+\begin{proof}
 \begin{align*}
 	(\ln{x^n})' &= (n \cdot \ln{x})'\\
 	(\ln{x^n})' &= n (\ln{x})'\\
@@ -646,11 +729,17 @@ Da $x$ er vilkårlig
 \end{align*}
 Og da $x$ er vilkårlig
 \[
-	(\cdot^n)' = n \cdot ^{n-1}.
+	(\cdot^n)' = n \cdot ^{n-1}.\qedhere
 \] 
+\end{proof}
+
+\opg{Hvorfor er det vigtigt at foretage det sidste skridt i beviserne?}
+
+\opg{Hvad kan differentialregningen bruges til?}
 
 \begin{tcolorbox}
 	\section{Differential- og integralregning}
+	Er tilsyneladende ufærdig. % TODO
 	\tcblower
 	\begin{enumerate}
 		\item Giv en præsentation af en selvvalgt del af teorien for 
@@ -664,14 +753,14 @@ Se definitioner i tidligere afsnit.
 	Lad $f$ være en kontinuert funktion defineret i intervallet $[a; b]$. Da er
 	$f$s stamfunktion, $F$,
 	\[
-		F(x) = \int_a^x f(t) \dx.		
+		F(x) = \int_a^x f(t) \dx,\quad x \leq b.		
 	\] 
 \end{theorem}
 % TODO: jeg er noget forvirret, for jeg ser hvad wikipedia mener, men vi har i
 % klassen fået præsenteret det geometriske forståelse... Hvordan viser man
 % dette bedst?
 
-\textbf{Bevis:}
+\begin{proof}
 % TODO: forklar bedre, indsæt figur.
 Antag, at $A(x)$ måler "arealet" under en graf fra $-\infty$ til $x$. Arealet
 har her et fortegn, dvs. at hvis grafen er under nul, så tæller den negativt,
@@ -686,6 +775,8 @@ Dette udtryk kan approximeres, men der kommer en fejl, kaldet $E$
 \[
 	A(x) - A(x_0) = f(x_0) \cdot (x-x_0) + E.
 \] 
+
+\opg{Overvej hvad approximationen giver står til udtryk for.}\\
 Der divideres med $x-x_0$.
 \begin{align*}
 	\frac{A(x)-A(x_0)}{x-x_0} &= f(x_0) + \frac{E}{x-x_0}\iff\\
@@ -701,10 +792,10 @@ Vi ved om $E$
 hvor $x_h$ og $x_l$ noterer x-koordinaten til henholdsvis det højeste og
 laveste punkt på grafen mellem $x$ og $x_0$. Men fordi $x_h$ og $x_l$ skal
 ligge mellem $x$ og $x_0$, så vil både $x_h$ og $x_l$ gå mod $x_0$ når $x$ går
-mod $x_0$. Med lidt omskrivninger fås altså
+mod $x_0$. Med lidt omskrivninger og klemmelemmaet fås altså
 \begin{align*}
 	\frac{E}{x-x_0} &\le f(x_h) - f(x_l) \xlongrightarrow[x \to x_0]{}\\
-					&= f(x_0) - f(x-0)\\
+					&= f(x_0) - f(x_0)\\
 					&= 0.
 \end{align*}
 Dvs.
@@ -713,6 +804,7 @@ Dvs.
 		   &= f(x_0) + 0,
 \end{align*}
 fordi $f(x_0)$ ikke påvirkes af $x$. Altså er $A$ en stamfunktion til $f$.
+\end{proof}
 
 \begin{theorem}{Integralregningens hovedsætning}{mainruleint}
 	Givet en funktion $f$ der er kontinuert
@@ -721,6 +813,8 @@ fordi $f(x_0)$ ikke påvirkes af $x$. Altså er $A$ en stamfunktion til $f$.
 	\]
 	hvor $F$ er en stamfunktion til $f$.
 \end{theorem}
+
+\opg{(joke) Vis ovenstående sætning.}
 
 \begin{tcolorbox}
 	\section{Differensligninger}
@@ -737,16 +831,20 @@ fordi $f(x_0)$ ikke påvirkes af $x$. Altså er $A$ en stamfunktion til $f$.
 	\] 
 \end{theorem}
 
-\textbf{Bevis:}
+\begin{proof}
 $g^x$ er en følge der integreres, ganske som i diskret analyse. Dermed skal der
-blot findes stamfølgen til $g^x$. Det er $\frac{1}{g-1} g^x$, udledningen
-overlades til læseren.
+blot findes stamfølgen til $g^x$. Det er $\frac{1}{g-1} g^x$.
+
+\opg{Vis at stamfølgen til $g^x$ er $\frac{1}{g-1}g^x$.}
+
+\medskip
 
 Således gælder
 \begin{align*}
 	\sum_{x=a}^b g^x &= \frac{1}{g-1} g^{b+1} - \frac{1}{g-1} g^a\\
-					 &= \frac{g^{b+1} - g^a}{g-1}
+					 &= \frac{g^{b+1} - g^a}{g-1}.\qedhere
 \end{align*}
+\end{proof}
 
 
 \begin{theorem}{Løsningsformel for $\Delta f(x) = r \cdot f(x) + p$}{}
@@ -757,7 +855,7 @@ Således gælder
 	hvor $p, b \in \mathbb{R}$ og $r \ne 0$.
 \end{theorem}
 
-\textbf{Bevis:}
+\begin{proof}
 Der definieres følgende for at undgå skrivekrampe $g = r+1$.
 
 \smallskip
@@ -777,11 +875,19 @@ Efter en omskrivning
 \[
 	f(x) = b \cdot g^x + p \cdot \sum_{i=0}^{x-1} g^i
 \] 
+
+\opg{Forklar omskrivningen}
+
 Grundet sætning \ref{th:sumpot}
 \begin{align*}
 	f(x) &= b \cdot g^x + p \cdot \frac{g^x - 1}{g - 1} \\
-	&= b \cdot (r + 1)^x + p \cdot \frac{(r+1)^x - 1}{r}.
+	&= b \cdot (r + 1)^x + p \cdot \frac{(r+1)^x - 1}{r}.\qedhere
 \end{align*}
+\end{proof}
+
+\opg{Hvad kan man bruge denne differensligning til?}
+
+\bigskip
 
 %\newcommand\vbinom[2]{\ensuremath{\binom{#1}{#2}}} % I fald man kan lide "almen" notation.
 \newcommand\vbinom[2]{\ensuremath{\nobreak{K(#1,\,#2)}}} % I fald man ikke kan ...
@@ -796,16 +902,20 @@ Grundet sætning \ref{th:sumpot}
 	\end{enumerate}
 \end{tcolorbox}
 
+\opg{(Svær) Bevis differensligningens gyldighed ved at tælle på to måder.}
+\smallskip
+
 \begin{theorem}{Binomialkoefficient}{binkoeff}
 	Givet to ikke negative hele tal, $n$ og $r$, hvor $r \le n$ gælder det at
 	binomialkoefficienten $\vbinom{n}{r}$ er på formen
 	\[
 		\vbinom{n}{r} = \frac{n^{\overline{r}}}{r!}.
 	\] 
-	\vbinom{n}{r} udtales "\textit{n} vælg \textit{r}".
+	\vbinom{n}{r} udtales "\textit{n} vælg \textit{r}", og skrives tit
+	$\binom{n}{r}$.
 \end{theorem}
 
-\textbf{Bevis:}
+\begin{proof}
 Følgende differensligning indføres
 \[
 	\vbinom{n+1}{r} = \vbinom{n}{r-1} + \vbinom{n}{r}.
@@ -853,10 +963,10 @@ Dermed er induktionsbeviset afsluttet.
 \smallskip
 
 Da det nu er vist at $f_r(n) = \frac{n^{\overline{r}}}{r!}$, og $f_r(n) =
-\vbinom{n}{r}$, da er differensligningen løst
-\[
-	\vbinom{n}{r} = \frac{n^{\overline{r}}}{r!}.
-\] 
+\vbinom{n}{r}$, da er differensligningen løst.
+\end{proof}
+
+\opg{($\neg$pensum) Overvej hvorfor et induktionsbevis er gyldigt.}
 
 \begin{definition}{Tæthedsfunktion}{thickfunc}
 	En funktion $f$ defineret i udfaldsmængden for en stokastisk variabel $X$ givet
@@ -883,6 +993,10 @@ Da det nu er vist at $f_r(n) = \frac{n^{\overline{r}}}{r!}$, og $f_r(n) =
 	.\] 
 \end{definition}
 
+\opg{Hvorfor er ovenstående en tæthedsfunktion?}
+
+\smallskip
+
 \begin{theorem}{Binomialfordelingen}{binomford}
 	%TODO Sandsynlighed for succes?
 	Givet $n$ bernoullifordelte stokastiske variable, $X$, med sandsynlighed
@@ -900,10 +1014,10 @@ Da det nu er vist at $f_r(n) = \frac{n^{\overline{r}}}{r!}$, og $f_r(n) =
 	\] 
 \end{theorem}
 
-\textbf{Bevis:}
+\begin{proof}
 Hvis en bernoullifordelt stokastisk variabel er lig med 1, kaldes udfaldet for
 en succes, $s$, ellers fiasko, $f$. For at spare på blækket skrives
-$P(s\,\text{og}\,f)$ som $P(sf)$. Således fås
+$P(s\:\text{og}\:f)$ som $P(sf)$. Således fås
 \begin{align*}
 	P(Y = r) &= P(\underbrace{ss \dotso s}_r \underbrace{ff \dotso f}_{n-r})\\ 
 			 &+ P(\underbrace{ss \dotso s}_{r-1} \underbrace{ff \dotso f}_{n-r}s)\\
@@ -928,9 +1042,9 @@ finde det, kan man forestille sig at man blandt de $n$ bernoullifordelte
 stokastiske variable, så vælges $r$ af dem til at være successer. Dette kan, per
 vores binomialkoefficient gøres på netop \vbinom{n}{r} måder. Altså fås
 \[
-	P(Y = r) = p^r \cdot (1-p)^{n-r} \cdot \vbinom{n}{r},
+	P(Y = r) = p^r \cdot (1-p)^{n-r} \cdot \vbinom{n}{r}.\qedhere
 \] 
-som var det, der ønskedes vist. \qedsymbol
+\end{proof}
 
 \section{Statistik}
 \subsection{Giv en præsentation af en selvvalgt del af teorien for hypotesetest}
@@ -984,7 +1098,7 @@ som var det, der ønskedes vist. \qedsymbol
 	\] 
 	\textit{Operationen kaldes også prikprodukt}.
 \end{theorem}
-\textbf{Bevis:}
+\begin{proof}
 \begin{align*}
 	(\vec{a} + \vec{b})^2 &= (\vec{a} + \vec{b}) \cdot (\vec{a} + \vec{b})\\
 						  &= (\vec{a} + \vec{b}) \cdot \vec{a} + (\vec{a} + \vec{b}) \cdot \vec{b}\\
@@ -993,8 +1107,9 @@ som var det, der ønskedes vist. \qedsymbol
 						  &= \vec{a}\,^2 + 2 \cdot \vec{a} \cdot \vec{b} + \vec{b}\,^2\\
 						  \intertext{Der omarrangeres}
 	\vec{a} \cdot \vec{b} &= \frac{(\vec{a} + \vec{b})^2 - \vec{a}\,^2 - \vec{b}\,^2}{2}\\
-						  &= \frac{|\vec{a} + \vec{b}|^2 - |\vec{a}|^2 - |\vec{b}|^2}{2}
+						  &= \frac{|\vec{a} + \vec{b}|^2 - |\vec{a}|^2 - |\vec{b}|^2}{2}\qedhere
 \end{align*}
+\end{proof}
 
 \begin{theorem}{Skalarprodukt ved dekomposanering af vektorer}{}
 	Givet to vektorer $\vec{a}$ og $\vec{b}$, som kan dekomposaneres til $\vektor{a_1}{a_2}$ og $\vektor{b_1}{b_2}$, så gælder
@@ -1002,15 +1117,17 @@ som var det, der ønskedes vist. \qedsymbol
 		\vec{a} \cdot \vec{b} = a_1 \cdot b_1 + a_2 \cdot b_2.
 	\] 
 \end{theorem}
-\textbf{Bevis:}
+
+\begin{proof}
 \begin{align*}
 	\vec{a} \cdot \vec{b} &= \frac{|\vec{a} + \vec{b}|^2 - |\vec{a}|^2 - |\vec{b}|^2}{2}\\
 						  &= \frac{(\vec{a} + \vec{b})_1^2 + (\vec{a} + \vec{b})_2^2 - (\vec{a}_1^2 + \vec{a}_2^2) - (\vec{b}_1^2 + \vec{b}_2^2)}{2}\\
 						  &= \frac{(\vec{a}_1 + \vec{b}_1)^2 + (\vec{a}_2 + \vec{b}_2)^2 - (\vec{a}_1^2 + \vec{a}_2^2) - (\vec{b}_1^2 + \vec{b}_2^2)}{2}\\
 						  &= \frac{\vec{a}_1^2 + 2 \cdot \vec{a}_1 \cdot \vec{b}_1 + \vec{b}_1^2 + \vec{a}_2^2 + 2 \cdot \vec{a}_2 \cdot \vec{b}_2 + \vec{b}_2^2 - (\vec{a}_1^2 + \vec{a}_2^2) - (\vec{b}_1^2 + \vec{b}_2^2)}{2}\\
 						  &= \frac{2 \cdot \vec{a}_1 \cdot \vec{b}_1 + 2 \cdot \vec{a}_2 \cdot \vec{b}_2}{2}\\
-						  &= \vec{a}_1 \cdot \vec{b}_1 + \vec{a}_2 \cdot \vec{b}_2
+						  &= \vec{a}_1 \cdot \vec{b}_1 + \vec{a}_2 \cdot \vec{b}_2\qedhere
 \end{align*}
+\end{proof}
 
 \begin{theorem}{Skalarprodukt ved vinkel}{}
 	Givet to vektorer $\vec{a}$ og $\vec{b}$, og vinklen mellem disse $v$, gælder
@@ -1018,7 +1135,7 @@ som var det, der ønskedes vist. \qedsymbol
 		\vec{a} \cdot \vec{b} = |\vec{a}| \cdot |\vec{b}| \cdot \cos{v}.
 	\] 
 \end{theorem}
-\textbf{Bevis:}
+\begin{proof}
 Det er givet, at cosinusrelationen gælder
 \[
 	c^2 = a^2 + b^2 - 2 \cdot a \cdot b \cdot \cos{\gamma}.
@@ -1062,8 +1179,9 @@ Da fås
 	\vec{a} \cdot \vec{b} &= \frac{|\vec{a}|^2 + |\vec{b}|^2 - 2 \cdot |\vec{a}| \cdot |\vec{b}| \cdot \cos{(180 - v)} - |\vec{a}|^2 - |\vec{b}|^2}{2}\\
 						  &= \frac{- 2 \cdot |\vec{a}| \cdot |\vec{b}| \cdot \cos{(180 - v)}}{2}\\
 						  &= -|\vec{a}| \cdot |\vec{b}| \cdot \cos{(180 - v)}\\
-						  &= |\vec{a}| \cdot |\vec{b}| \cdot \cos{v}.
+						  &= |\vec{a}| \cdot |\vec{b}| \cdot \cos{v}.\qedhere
 \end{align*}
+\end{proof}
 
 \begin{tcolorbox}
 	\section{Vektorer}
@@ -1075,12 +1193,48 @@ Da fås
 	\end{enumerate}
 \end{tcolorbox}
 
-\begin{itemize}
-	\item Kør ovenstående
-	\item Bevis projektionsformlen
-	\item Afstand mellem punkt og linje (mums)
-	\item Regression hvis der er tid
-\end{itemize}
+\begin{definition}{Projektion}{proj}
+	Givet to vektorer $\vec{a}$ og $\vec{b}$, kan $\vec{a}$ projiceres på
+	$\vec{b}$. Dette skrives $\vec{a}_b$.
+
+	$\vec{a}_b$ skal opfylde følgende egenskaber
+	\begin{itemize}
+		\item $\vec{a}_b \parallel \vec{b} \iff \vec{a_b} = t \cdot \vec{b}$,
+		\item $\vec{a}_b - \vec{a} \bot \vec{b} \iff (\vec{a}_b - \vec{a}) \cdot \vec{b} = 0$.
+	\end{itemize}
+\end{definition}
+
+\begin{theorem}{Projektion}{proj}
+	Givet to vektorer, $\vec{a}$ og $\vec{b}$, er formlen for den projicerede
+	vektor $\vec{a}_b$ givet ved 
+	\[
+		\vec{a}_b = \frac{\vec{a} \cdot \vec{b}}{\vec{b}^2} \cdot b.
+	\] 
+\end{theorem}
+
+\begin{proof}
+Per definitionen kan følgende ligning opskrives
+\[
+	(t \cdot \vec{b} - \vec{a}) \cdot \vec{b} = 0.
+\] 
+Vi ønsker at isolere $t$. Derfor ganges ind i parantesen (tilladt fordi
+prikproduktet opfylder den distributive lov)
+\[
+	(t \cdot \vec{b}) \cdot \vec{b} - \vec{a} \cdot \vec{b} = 0.
+\] 
+Da skalering og prikprodukt er associative, er følgende en gyldig omskrivning
+\[
+	t \cdot \vec{b}^2 - \vec{a} \cdot \vec{b} = 0.
+\] 
+$t$ isoleres
+\[
+	t = \frac{\vec{a} \cdot \vec{b}}{\vec{b}^2}.
+\] 
+Denne fundne $t$-værdi indsættes i definitionen
+\[
+	\vec{a}_b = t \cdot \vec{b} = \frac{\vec{a} \cdot \vec{b}}{\vec{b}^2} \cdot \vec{b}.\qedhere
+\] 
+\end{proof}
 
 \section{Annuiteter}
 \begin{itemize}

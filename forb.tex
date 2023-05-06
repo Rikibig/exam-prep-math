@@ -2,6 +2,11 @@
 
 \input{preamble.tex}
 
+\usepackage{makeidx}
+\makeindex
+
+\newcommand\ud{\,\mathrm{d}}
+
 %\synctex=1
 \newcommand{\Rho}{\mathrm{P}}
 
@@ -23,7 +28,7 @@
 I det følgende vil overskriften angive hvilket spørgsmål der svares på. Da det
 er bedst at svare på begge spørgsmål "samtidigt" eller i det mindste have en
 nogenlunde flydende overgang mellem de to spørgsmål, virker det gavnligst at
-beskrive spørgsmålene, og dernæst under \textit{EN} overskrift besvare
+beskrive spørgsmålene, og dernæst under \emph{én} overskrift besvare
 spørgsmålene.
 
 Der er desuden lagt en række opgaver ind; materialet kan læses uden at løse
@@ -45,12 +50,12 @@ Her kan man komme ind på følgende:
 		\[
 			\mathbb{R} \rightarrow \mathbb{R}^2.
 		\] 
-	\item Vektorfunktioner skrives
+	\item Vektorfunktioner\index{vektorfunktion} skrives
 		\[
 			\vec{v}(t).
 		\] 
-	\item $t$ kaldes normalt \texttt{parameterværdi}.
-	\item Præsenteres en vektorfunktion grafisk, benyttes en banekurve.\\
+	\item $t$ kaldes normalt \texttt{parameterværdi}\index{parameterværdi}.
+	\item Præsenteres en vektorfunktion grafisk, benyttes en banekurve\index{banekurve}.\\
 		\textit{Bemærk}: En banekurve viser ikke alt ved en vektorfunktion. Fx.
 		er banekurverne for $\vektor{t^3}{t^3}$ og $\vektor{t}{t}$ ens.
 	\item Den afledede af en vektorfunktion kan bestemmes således
@@ -64,7 +69,7 @@ Her kan man komme ind på følgende:
 	\item Den afledede beskriver retningsvektoren for tangenten til en bestemt
 		parameterværdi.
 
-	\item Den afledede kaldes også hastighedsvektoren
+	\item Den afledede kaldes også hastighedsvektoren\index{hastighedsvektor}
 	\item Dermed kan farten bestemmes ved længden af hastighedsvektoren
 		\[
 			\text{fart}(\vec{v}) = \left|\dot{\vec{v}}\right|
@@ -73,8 +78,9 @@ Her kan man komme ind på følgende:
 \end{itemize}
 
 \begin{definition}{Cosinus, sinus og tangens}{}
+	\index{trigonometriske funktioner}
 	Cosinus, $\cos$, sinus, $\sin$, og tangens, $\tan$, defineres ud fra
-	enhedscirklen, der har radius 1.
+	enhedscirklen\index{enhedscirklen}, der har radius 1.
 	\begin{center}
 	\begin{tikzpicture}[scale=2.0]
 		\coordinate (A) at (0, 0);
@@ -191,6 +197,13 @@ til punktet.}
 			sætning \ref{th:logswap}, \ref{th:logpotenstilgange} og \ref{th:loggangeplus}.
 	\end{itemize}
 \end{eksempel*}
+
+\begin{definition}{Logaritme}{log}
+	Logaritmen med grundtal $a$ defineres så
+	\[
+		\log_a{a^x} = x,\qquad a \in \mathbb{R}\backslash\{0, 1\}, x\in\mathbb{R}.
+	\] 
+\end{definition}
 
 \begin{theorem}{Logaritme laver gange om til plus}{loggangeplus}
 	\[\log_A{B \cdot C} = \log_AB + \log_AC\]
@@ -970,10 +983,9 @@ Da det nu er vist at $f_r(n) = \frac{n^{\overline{r}}}{r!}$, og $f_r(n) =
 
 \begin{definition}{Tæthedsfunktion}{thickfunc}
 	En funktion $f$ defineret i udfaldsmængden for en stokastisk variabel $X$ givet
-	ved intervallet $[a; b]$ er en tæthedsfunktion hvis og kun hvis den
-	opfylder
+	ved mængden $\Omega$ er en tæthedsfunktion hvis og kun hvis den opfylder
 	\[
-		f(x) \ge 0 \qquad \text{og} \qquad \int_a^b f(x) \dx = 1.
+		f(x) \ge 0, \forall x \in \Omega \qquad \text{og} \qquad \int_\Omega f(x) \dx = 1.
 	\] 
 	Tæthedsfunktionen angiver sandsynligheden for et givent udfald
 	\[
@@ -987,8 +999,7 @@ Da det nu er vist at $f_r(n) = \frac{n^{\overline{r}}}{r!}$, og $f_r(n) =
 		f(x) = 
 		\begin{cases} 
 			p & x = 1\\
-			(1 - p) & x = 0\\
-			0 & \text{ellers}
+			(1 - p) & x = 0
 		\end{cases}
 	.\] 
 \end{definition}
@@ -1046,8 +1057,17 @@ vores binomialkoefficient gøres på netop \vbinom{n}{r} måder. Altså fås
 \] 
 \end{proof}
 
-\section{Statistik}
-\subsection{Giv en præsentation af en selvvalgt del af teorien for hypotesetest}
+\begin{tcolorbox}
+	\section{Statistik}
+	\tcblower
+	\begin{enumerate}
+		\item Giv en præsentation af en selvvalgt del af teorien for
+			hypotesetest.
+		\item Bevis formlen for 95\%-konfidensintervallet for populationens
+			sandsynlighedsparameter ud fra stikprøveandelen. 	
+	\end{enumerate}
+\end{tcolorbox}
+
 \begin{itemize}
 	\item Nulhypotese
 	\item Hvornår er hvad rigtigt?
@@ -1057,6 +1077,34 @@ vores binomialkoefficient gøres på netop \vbinom{n}{r} måder. Altså fås
 		\]
 	\item Ved $\hat p = \frac{X}{n}$, og $X \in $
 \end{itemize}
+
+\begin{theorem}{95\%-konfidensinterval}{95konfidens}
+	Lad $X$ være en bernoullifordelt stokastisk variabel med
+	sandsynlighedsparameter $p$. Givet en stikprøveandel $\hat{p}$ givet ved
+	$\frac{1}{n}\sum_{i=1}^n X_i$ kan der opstilles et 95\% konfidensinterval
+	for sandsynlighedsparameteren:
+	\[
+		P\left(p\in\left[\hat p \pm 2\cdot\sqrt{\frac{\hat p\cdot(1-\hat p)}{n}}\right]\right)
+		\approx 95\%.
+	\] 
+\end{theorem}
+
+\begin{proof}
+	Antag $p$ er kendt. Da er det muligt at finde et 95\%-konfidensinterval for
+	$\hat{p}$
+	\[
+		P\left(\hat{p}\in\left[p \pm 2\cdot\sqrt{\frac{p\cdot(1-p)}{n}}\right]\right)
+		\approx 95\%.
+	\] 
+	Sandsynligheden for at en stikprøveandel $\hat{p}$ optræder ved
+	sandsynlighedsparameter $p$ er den samme som at $p$ optræder som
+	stikprøveandel ved sandsynlighedsparameter $\hat{p}$. Derfor kan der i
+	konfidensintervallet byttes om på $p$ og $\hat{p}$
+	\[
+		P\left(p\in\left[\hat p \pm 2\cdot\sqrt{\frac{\hat p\cdot(1-\hat p)}{n}}\right]\right)
+		\approx 95\%.\qedhere
+	\] 
+\end{proof}
 
 \section{Transformationer}
 \begin{itemize}
@@ -1069,6 +1117,63 @@ vores binomialkoefficient gøres på netop \vbinom{n}{r} måder. Altså fås
 	\item Strækning langs x, konsekvenser
 	\item Middelværdi
 \end{itemize}
+
+\begin{theorem}{Integral af klokkekurven}{intklokke}
+	\[
+		\int_{-\infty}^\infty e^{-\frac{1}{2} x^2} \ud x = \sqrt{2 \cdot \pi}.
+	\] 
+\end{theorem}
+\begin{proof}
+	Det viser sig at være umådeligt svært at finde en stamfunktion til
+	klokkefunktionen. I stedet sættes integralet i anden, og vi ser hvad der
+	sker
+	\begin{align*}
+		\left(\int_{-\infty}^\infty e^{-\frac{1}{2} x^2} \ud x\right)^2 &= \int_{-\infty}^\infty e^{-\frac{1}{2} x^2} \ud x \cdot \int_{-\infty}^\infty e^{-\frac{1}{2} x^2} \ud x\\
+		\intertext{Vi vælger lige at kalde den ene variabel $y$.}
+		 &= \int_{-\infty}^\infty e^{-\frac{1}{2} x^2} \ud x \cdot \int_{-\infty}^\infty e^{-\frac{1}{2} y^2} \ud y\\
+		 \intertext{Det er klart at integralet der afhænger af $y$ ikke
+			 afhænger af $x$, og dermed er en gangekonstant. Altså bruges den
+		 distributive lov\footnote{Ikke helt... men hvorfor?}.} % TODO
+		 &= \int_{-\infty}^\infty \int_{-\infty}^\infty e^{-\frac{1}{2} y^2} \ud y \cdot e^{-\frac{1}{2} x^2} \ud x\\
+		 \intertext{Da $e^{-\frac{1}{2} x^2}$ også er uafhængig af $y$, kan
+		 også denne ganges ind}
+		 &= \int_{-\infty}^\infty \int_{-\infty}^\infty e^{-\frac{1}{2} y^2} \cdot e^{-\frac{1}{2} x^2} \ud y \ud x\\
+		 &= \int_{-\infty}^\infty \int_{-\infty}^\infty e^{-\frac{1}{2} \left(x^2+y^2\right)} \ud y \ud x.\\
+	\end{align*}
+
+	Ved en geometrisk forståelse af integralet bliver det klart, at man måler
+	volumen under en 3D klokke givet ved
+	\[
+		f(x, y) = e^{-\frac{1}{2} (x^2 + y^2)}.
+	\] 
+	Her angiver $f(x, y)$ altså højden af klokken ved $x, y$. Hvis man i stedet
+	ønskede at finde højden af klokken en bestemt afstand fra origo, er dette
+	også muligt, da klokken er cirkulært symmetrisk (følger af at $x^2 + y^2 =
+	r^2$). Således fås
+	\[
+		f(r) = e^{-\frac{1}{2}r^2}.
+	\] 
+	Da denne funktion beskriver højden ved en bestemt radius, kan volumen
+	findes ved volumen af drejningslegemet af $f(r)$ fra $0 \leq r < \infty$.
+	Dermed
+	\begin{align*}
+		\int_{-\infty}^\infty \int_{-\infty}^\infty e^{-\frac{1}{2} \left(x^2+y^2\right)} \ud y \ud x &= \int_0^\infty 2 \cdot \pi \cdot r \cdot e^{-\frac{1}{2}r^2} \ud r\\
+			&= 2 \cdot \pi \cdot \int_0^\infty r \cdot e^{-\frac{1}{2}r^2} \ud r\\
+			\intertext{Det kan vises at stamfunktionen til $r \cdot e^{-\frac{1}{2}r^2}$ er $-e^{-\frac{1}{2}r^2}$.}
+			&= 2 \cdot \pi \cdot \left[ -e^{-\frac{1}{2}r^2} \right]_0^\infty\\
+			&= 2 \cdot \pi \cdot (-e^{-\infty} - (-e^0))\\
+			&= 2 \cdot \pi.
+	\end{align*}
+
+	Og da 
+	\[
+		\left(\int_{-\infty}^\infty e^{-\frac{1}{2}x^2} \ud x\right)^2 = \int_0^\infty 2 \cdot \pi \cdot r \cdot f(r) \ud r
+	\] 
+	er 
+	\[
+		\int_{-\infty}^\infty e^{-\frac{1}{2}x^2} \ud x = \sqrt{2 \cdot \pi}.\qedhere
+	\] 
+\end{proof}
 
 \begin{tcolorbox}
 	\section{Vektorer}
@@ -1240,5 +1345,7 @@ Denne fundne $t$-værdi indsættes i definitionen
 \begin{itemize}
 	\item Tænkning kræves
 \end{itemize}
+
+\printindex
 
 \end{document}

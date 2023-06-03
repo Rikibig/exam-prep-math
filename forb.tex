@@ -5,8 +5,6 @@
 \usepackage{makeidx}
 \makeindex
 
-\newcommand\ud{\,\mathrm{d}}
-
 %\synctex=1
 \newcommand{\Rho}{\mathrm{P}}
 
@@ -860,7 +858,7 @@ Således gælder
 \end{proof}
 
 
-\begin{theorem}{Løsningsformel for $\Delta f(x) = r \cdot f(x) + p$}{}
+\begin{theorem}{Løsningsformel for $\Delta f(x) = r \cdot f(x) + p$}{differensligningen}
 	\[
 		\Delta f(x) = r\cdot  f(x)+p, f(0) = b 
 		\implies f(x) = b \cdot (r + 1)^x + p \cdot \frac{(r+1)^x - 1}{r},
@@ -1341,10 +1339,102 @@ Denne fundne $t$-værdi indsættes i definitionen
 \] 
 \end{proof}
 
-\section{Annuiteter}
-\begin{itemize}
-	\item Tænkning kræves
-\end{itemize}
+\begin{tcolorbox}
+	\section{Annuiteter}
+	\tcblower
+	\begin{enumerate}
+		\item Giv en præsentation af en selvvalgt del af teorien for
+			rentesregning med fokus på annuiteter.
+		\item Udled formlen for annuitetsopsparing eller annuitetslån.
+	\end{enumerate}
+\end{tcolorbox}
+
+Antag at du vil købe et hus. Du har ikke råd til at betale hele prisen på en
+gang, og må derfor stifte gæld. Du går altså i banken, og får at vide, at du
+kan låne den nødvendige pengesum, 750 000 kr. Banken tager en rente på 2\% om
+året (stop med at kommentere den, jeg er ikke økonom). Banken ønsker at finde
+ud af, hvor stor din ydelse (hvor mange penge du betaler hvert år) skal være,
+for at du har tilbagebetalt lånet på 10 år.
+
+\smallskip
+\opg{Hvis banken krævede en rente på 0\% per år, hvor mange år ville det så
+tage at tilbagebetale lånet? (en omvendt sparegris)}
+\smallskip
+
+Omvendt kan man også overveje, hvor stor gælden ville blive, hvis du kunne have
+lånet afdragsfrit i 30 år.
+
+\smallskip
+\opg{Overvej hvordan man ville kunne finde ud af dette.}
+\smallskip
+
+Hvis vi i stedet ser på et afdragsfrit lån i 3 år, er det lidt nemmere at beregne.
+\begin{description}
+	\item[Efter 0 år] har man en gæld på 750 000 kr.
+	\item[Efter 1 år] har man en gæld på 750 000 kr. $ \cdot 1,02\% = $ 765000 kr.
+	\item[Efter 2 år] har man en gæld på 750 000 kr. $ \cdot 1,02\%^2 = $ 780300 kr.
+	\item[Efter 3 år] har man en gæld på 750 000 kr. $ \cdot 1,02\%^3 = $ 795906 kr.
+\end{description}
+
+\smallskip
+\opg{Beregn gælden efter 30 år}
+
+\opg{Find en formel for gælden efter $n$ år}
+
+\opg{Find en formel for gælden, hvis startgælden er $G$, efter $n$ år.}
+\smallskip
+
+Men så kunne man overveje, hvordan gælden udvikler sig, hvis man tilbagebetaler
+på lånet. Bankens system er lavet på en sådan måde, at der først gives renter,
+og derefter betales af.
+
+\smallskip
+\opg{Hvad er gælden efter 1 år?}
+
+\opg{Hvad er gælden efter 2 år?}
+\smallskip
+
+Her er det nyttigt at tænke på gælden som en funktion af tiden. Til tiden $0$
+er gælden startgælden. Lad funktionen være betegnet ved $G$. Med den notation
+er det muligt at formalisere hvad der skete i ovenstående opgaver.
+\[
+	G(1) = G(0) \cdot (1 + r) - y,
+\] 
+hvor $G(1)$ er gælden efter 1 år, $G(0)$ startgælden (hovedstolen), $r$ er
+renten og $y$ ydelsen, dvs. det beløb man betaler tilbage til banken hvert år.
+
+\smallskip
+\opg{Opstil en generel differensligning, så gælden $G(n + 1)$ kan bestemmes ud
+fra $G(n)$.}
+\smallskip
+
+Det ses ved differensligningen, at man kan bruge sætning
+\ref{th:differensligningen} til at løse den. Således fås
+\[
+	G(n) = G(0) \cdot (r + 1)^n - y \cdot \frac{(r + 1)^n - 1}{r}.
+\] 
+
+\smallskip
+\opg{Overvej hvad $G(n)$ skal være, når lånet er betalt af.}
+\smallskip
+
+Fordi gælden per definition er 0 når lånet er tilbagebetalt, kan man skrive
+følgende
+\[
+	0 = G(0) \cdot (r + 1)^n - y \cdot \frac{(r + 1)^n - 1}{r},
+\] 
+hvor $n$ er så mange år man skal betale tilbage over. Fordi det var interessant
+at finde ydelsen, isoleres denne
+\begin{align*}
+	y &= \frac{G(0) \cdot (r + 1)^n}{\frac{(r + 1)^n - 1}{r}}\\
+	  &= G(0) \cdot \frac{(r + 1)^n \cdot r}{(r + 1)^n - 1}\\
+	  &= G(0) \cdot \frac{\frac{1}{(r+1)^{-n}} \cdot r}{(r + 1)^n - 1}\\
+	  &= G(0) \cdot \frac{r}{(r+1)^{-n} \cdot ((r + 1)^n - 1)}\\
+	  &= G(0) \cdot \frac{r}{1 - (r+1)^{-n}}.
+\end{align*}
+
+Denne formel for ydelsen er den samme som man finder i formelsamlingen.
+
 
 \printindex
 

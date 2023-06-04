@@ -1435,6 +1435,227 @@ at finde ydelsen, isoleres denne
 
 Denne formel for ydelsen er den samme som man finder i formelsamlingen.
 
+\begin{tcolorbox}
+	\section{Differentialligninger}
+	\tcblower
+	\begin{enumerate}
+		\item Giv en præsentation af en selvvalgt del af teorien for
+			differentialligninger med fokus på vækstmodeller.
+		\item Redegør for løsning af differentialligninger på formen $a(y)
+			\cdot y' = b(x)$. 
+	\end{enumerate}
+\end{tcolorbox}
+
+Hvor man i differensligninger beskæftiger sig med diskrete skridt, så er
+differentialligningerne et udtryk for noget der sker kontinuerligt. En klassisk
+differentialligning fra fysikken er Hooke's lov,
+\[
+	F = -k \cdot x,
+\] 
+hvor $k$ er konstant og $F$ er kraften og $x$ er strækningen af en fjeder. Dvs.
+at man kan skrive følgende differentialligning op
+\[
+	m \cdot x'' = -k \cdot x,
+\],
+hvor $m$ er massen. Dette er hvad man kalder en andenordensdifferentialligning,
+idet $x$ er afledt to gange.
+
+Heldigvis findes også simplere differentialligninger. F.eks. kunne man
+forestille sig en differentialligning, som holdt styr på, hvor hurtigt man gik.
+\[
+	s' = k,
+\]
+hvor $s$ er stedfunktionen. Denne form for differentialligninger kaldes
+``konstant vækst''.
+
+
+\smallskip
+
+\begin{definition}{Konstant vækst}{konstantvakst}
+	\(
+		y' = k.
+	\) 
+\end{definition}
+
+I en anden model kunne man undersøge hvordan en atombombe virker. Man kunne
+forestille sig at man tælle antallet af neutroner, $n$, i en uran-235-bombe.
+Her kan det antages, at hver neutron rammer et nyt uran-235 atom, som spaltes
+og danner i gennemsnit 2,4 nye neutroner. Denne slags vækst kaldes ``relativ
+vækst''.
+
+\smallskip
+
+\begin{definition}{Relativ vækst}{relvakst}
+	\( y' = k \cdot y. \)
+\end{definition}
+
+\opg{Opskriv en rimelig model for væksten af neutroner i atombomben.}
+
+\smallskip
+
+Sådan er der også givet anledning til noget der kaldes ``dæmpet vækst''.
+
+\begin{definition}{Dæmpet vækst}{dampvakst}
+	\( y' = k \cdot (M - y). \)
+\end{definition}
+
+\opg{Find på rimelig model modelleret af dæmpet vækst.}
+
+\smallskip
+
+Slutteligt kunne man måske ønske at undersøge antallet af hjorte i en
+hjortebestand. Hele bestanden bor i en skov, og der er kun nok mad til $M$
+hjorte. Alligevel er den dæmpede model ikke rimelig her; det forventes ikke at
+der opstår en masse hjorte ud af det blå i starten. Det giver anledning til
+følgende model
+
+\smallskip
+
+\begin{definition}{Dæmpet relativ vækst}{damprelvakst}
+	\( y' = k \cdot (M - y) \cdot y. \)
+\end{definition}
+
+\opg{Opskriv en rimelig model for hjortebestanden.}
+
+\smallskip
+
+Det er selvfølgelig dejligt at kunne opskrive modellerne, men de er til ingen
+nytte, hvis ikke de kan løses. Her indføres en definition, som viser sig at
+være brugbar.
+
+\begin{definition}{Seperable differentialligninger}{sepdiff}
+	Givet funktionerne $f: x \mapsto y$, $a$ og $b$, er differentialligningen
+	\[
+		a(y) \cdot y' = b(x),
+	\] 
+	en seperabel differentialligning.
+\end{definition}
+
+\opg{Verificér at alle vækstmodellerne kan skrives på denne form.}
+
+\smallskip
+
+\begin{theorem}{Løsning af $a(y) \cdot y' = b(x)$}{sepdiffloes}
+	Løsningerne på en seperabel differentialligning fra definition
+	\ref{df:sepdiff} er givet ved
+	\[
+		y = A^{-1}\left(\int b(x) \ud x\right),
+	\] 
+	hvor $A^{-1}$ betegner urbilledet\footnote{Et \index{urbillede} $X$ til en
+	funktionsværdi $y$ ved en funktion $f$ er definieret som $X = \{x \in
+\Omega(f) | f(x) = y\}$.} af $A$.
+\end{theorem}
+
+\begin{proof}
+	Givet
+	\begin{align*}
+		a(y) \cdot y' &= b(x) \iff
+	\intertext{kan det med en god idé omskrives til en simpel ligning i $y$ ved brug af
+	kædereglen}
+		(A \circ y)' &= b(x) \iff,
+		\intertext{hvor $A$ er en stamfunktion til $a$. $y$ isoleres ved at
+		finde stamfunktioner på begge sider af lighedstegnet}
+		A \circ y &= \int b(x) \ud x \iff\\
+		\intertext{$y$ isoleres ved at benytte urbilledet af $A$}
+		y &= A^{-1}\left(\int b(x) \ud x\right)\qedhere
+	\end{align*}
+\end{proof}
+
+\begin{tcolorbox}
+	\section{Differentialligninger}
+	\tcblower
+	\begin{enumerate}
+		\item Giv en præsentation af en selvvalgt del af teorien for
+			differentialligninger.
+		\item Redegør for løsning af differentialligninger på formen $y' + a(x)
+			\cdot y = b(x)$, og kom ind på det tilfælde, hvor én af
+			funktionerne $a$ og $b$ er konstant lig 0.   
+	\end{enumerate}
+\end{tcolorbox}
+
+Se ovenstående afsnit for mere information om differentialligninger.
+
+\smallskip
+
+\begin{definition}{Lineær differentialligning af første orden}{lindiff1}
+	En lineær differentialligning af første orden defineres til at være alle
+	differentialligninger der kan skrives på formen
+	\[
+		y' + a(x) \cdot y = b(x),
+	\] 
+	hvor $a$ og $b$ er funktioner, og $f: x \mapsto y$.
+\end{definition}
+
+\opg{Undersøg om seperable differentialligninger er af første orden.}
+
+\smallskip
+
+\begin{theorem}{Panserformlen}
+	{panser}
+	Givet en differentialligning af første orden fra definition
+	\ref{df:lindiff1}, er løsningen på formen
+	\[
+		y = \frac{\int \left(e^A \cdot b\right)}{e^A},
+	\]
+	hvor $A$ er stamfunktion til $a$.
+\end{theorem}
+
+\begin{proof}
+	For at løse differentialligningen ønskes det igen at det er en simpel
+	ligning. Differentialligningen
+	\[
+		y' + a(x) \cdot y = b(x),
+	\] 
+	minder os om produktreglen.
+	\[
+		(y \cdot A(x))' = A(x) \cdot y' + a(x) \cdot y.
+	\] 
+	Desværre passer denne ikke umiddelbart. Med en omskrivning ses hvad der er
+	brug for
+	\[
+		\frac{(y \cdot A(x))'}{A(x)} = y' + \frac{a(x)}{A(x)} \cdot y.
+	\] 
+	På en eller anden måde skal der ikke divideres med $A(x)$. Hvis nu man kan
+	omskrive $A(x)$ på en måde så det lykkes, så kald den omskrivning $g$
+	\begin{align*}
+		\frac{(y \cdot g(A(x)))'}{g(A(x))} &= y' + \frac{(g(A(x)))'}{g(A(x))} \cdot y\\
+		\intertext{Jf. kædereglen}
+										   &= y' + \frac{g'(A(x)) \cdot a(x)}{g(A(x))} \cdot y.
+	\end{align*}
+	Vi står næsten med svaret, vi mangler blot en funktion der er sin egen
+	afledte. Altså fås
+	\begin{align*}
+		\frac{(y \cdot e^{A(x)})'}{e^{A(x)}} &= y' + \frac{e^{A(x)} \cdot a(x)}{e^{A(x)}} \cdot y\\
+											 &= y' + a(x) \cdot y.
+	\end{align*}
+	Det er vældig praktisk, for nu er differentialligningen blevet til en
+	simpel ligning. Ud- og indpakningsmetode benyttes
+	\begin{align*}
+		&\frac{(y \cdot e^{A(x)})'}{e^{A(x)}} =& y' &+ a(x) \cdot y &= b(x)&\\
+		&\uparrow\: \frac{\circ}{e^{A(x)}} &&& e^{A(x)} \cdot \circ \: \downarrow&\\
+		&(y \cdot e^{A(x)})' &&=& e^{A(x)} \cdot b(x)&\\
+		&\uparrow\: ( \circ )' &&& \int \circ \ud x \: \downarrow&\\
+		&y \cdot e^{A(x)} &&=& \int \left(e^{A(x)} \cdot b(x)\right) \ud x&\\
+		&\uparrow\: \circ \cdot e^{A(x)} &&& \frac{\circ}{e^{A(x)}} \: \downarrow&\\
+		&y &&=& \frac{\int \left(e^{A(x)} \cdot b(x)\right) \ud x}{e^{A(x)}}&.\qedhere
+	\end{align*}
+\end{proof}
+
+Der følger korrolar om seperable differentialligninger. Hvis $a$ er konstant
+lig nul, er følgende resultatet
+\[
+	y' = b(x),
+\] 
+som er en seperabel differentialligning. Hvis $b$ er konstant lig nul følger
+\begin{align*}
+	y' + a(x) \cdot y &= 0\\
+	y' = -a(x) \cdot y\\
+	\frac{y'}{y} = -a(x),
+\end{align*}
+som også er en seperabel differentialligning.
+
+\opg{Løs ligningerne hvor $a(x) = 0$ eller $b(x) = 0$ og tjek om det giver det
+samme som den seperable differentialligningsløsningsformel.}
 
 \printindex
 

@@ -1104,17 +1104,89 @@ vores binomialkoefficient gøres på netop \vbinom{n}{r} måder. Altså fås
 	\] 
 \end{proof}
 
-\section{Transformationer}
-\begin{itemize}
-	\item Flytning (x, y)
-	\item Strækning (x, y)
-	\item $e^{-\frac{1}{2}x^2}$
-	\item Tæthedsfunktioner
-	\item Areal
-	\item Skaler langs y.
-	\item Strækning langs x, konsekvenser
-	\item Middelværdi
-\end{itemize}
+\begin{tcolorbox}
+	\section{Transformationer}
+	\tcblower
+	\begin{enumerate}
+		\item Giv en præsentation af en selvvalgt del af teorien for transformation af funktioner.
+		\item Udled forskriften for tæthedsfunktionen for normalfordelingen. 
+	\end{enumerate}
+\end{tcolorbox}
+
+Man kan flytte funktioner op og ned og hid og did. Hertil kan man justere på
+følgende konstanter
+\[
+	f(x - d) + c.
+\] 
+Efter en sådan transformation, er $f$ flyttet $d$ til højre og $c$ op. Bemærk
+at både $d$ og $c$ kan være negative.
+
+\smallskip
+
+\opg{Vis at ovenstående formodning passer.}
+
+\smallskip
+
+Derudover kan funktioner strækkes
+\[
+	a \cdot f(\frac{x}{b}),
+\] 
+hvor $a$ angiver lodret stræk, og $b$ horizontalt.
+
+\begin{theorem}{Om stræk}{straek}
+	Givet en funktion $f$ som opfylder
+	\[
+		\int_{-\infty}^{\infty} f(x) \ud x = k,
+	\] 
+	hvor $k$ er endelig, gælder det, at en hvis en funktion strækkes med $a$
+	lodret, så bliver integralet tilsvarende $a$ større, og hvis en funktion
+	strækkes med $b$ vandret, så bliver integralet også $b$ gange større.
+\end{theorem}
+
+\begin{proof}[Bevis for vandret stræk]
+	Lad en funktion $f$ opfylde
+	\[
+		\int_{-\infty}^{\infty} f(x) \ud x = k,
+	\] 
+	hvor $k$ er endelig. Efter et stræk er integralet givet ved
+	\[
+		\int_{-\infty}^{\infty} f\left(\frac{x}{b}\right) \ud x.
+	\] 
+	For at kunne bestemme integralet skal der findes en stamfunktion til
+	$f(\frac{x}{b})$. Man finder at følgende er en stamfunktion
+	\[
+		b \cdot F(\frac{x}{b}).
+	\] 
+	Jf. integralregningens hovedsætning
+	\begin{align*}
+		\int_{-\infty}^{\infty} f\left(\frac{x}{b}\right) \ud x &= \left[b \cdot F\left(\frac{x}{b}\right) \right]_{-\infty}^{\infty}\\
+			&= b \cdot \left[F\left(\frac{x}{b}\right) \right]_{-\infty}^{\infty}\\
+			&= b \cdot k.\qedhere
+	\end{align*}
+\end{proof}
+
+\opg{Bevis resten af sætningen.}
+
+\opg{Overvej om der er et stærkere resultat.}
+
+\begin{definition}{Klokkekurve}{clock}
+	Klokkekurven er det første skridt mod normalfordelingen
+	\[
+		e^{-\frac{1}{2}x^2}.
+	\] 
+\end{definition}
+
+Vi ønsker at lave klokkekurven om til en tæthedsfunktion, jf. definition
+\ref{df:thickfunc}. Den skal altså opfylde at være positiv alle vegne, og at
+arealet under grafen er 1.
+
+\opg{Vis at første del af kravet er opfyldt.}
+
+\smallskip
+
+For at gøre arealet under grafen til 1, må der altså strækkes lodret med den
+multiplikativt inverse til arealet under klokkekurven. Derfor vises følgende
+sætning.
 
 \begin{theorem}{Integral af klokkekurven}{intklokke}
 	\[
@@ -1172,6 +1244,36 @@ vores binomialkoefficient gøres på netop \vbinom{n}{r} måder. Altså fås
 		\int_{-\infty}^\infty e^{-\frac{1}{2}x^2} \ud x = \sqrt{2 \cdot \pi}.\qedhere
 	\] 
 \end{proof}
+
+\begin{definition}{Standardnormalfordeling}{stdnorm}
+	Ovenstående sætninger giver anledning til at definere en
+	standardnormalfordeling
+	\[
+		\frac{1}{2\pi} \cdot e^{-\frac{1}{2}x^2}.
+	\] 
+\end{definition}
+
+\opg{Vis at standardnormalfordelingen er en tæthedsfunktion.}
+
+\smallskip
+
+Standardnormalfordelingen har spredning 1 og middelværdi 0. Ønsker man at
+justere spredningen skal man strække vandret med den ønskede spredning
+$\sigma$. Men idet man gør det, bliver arealet under grafen lig $\sigma$.
+Derfor skal man også strække lodret med den multiplikativt inverse af $\sigma$.
+
+\opg{Overvej hvordan man kan ændre middelværdien.}
+
+\begin{theorem}{Normalfordelingen}{norm}
+	Tæthedsfunktionen for en normalfordelt stokastisk variabel med middelværdi $\mu$ og spredning $\sigma$ er givet ved
+	\[
+		\frac{1}{2\pi\sigma} e^{-\frac{1}{2}\left(\frac{x - \mu}{\sigma}\right)}.
+	\] 
+\end{theorem}
+
+\opg{Vis at ovenstående er en tæthedsfunktion.}
+
+\opg{Tegn en skitse af normalfordelingens tæthedsfunktion, når $\mu=1$ og $\sigma=3$.}
 
 \begin{tcolorbox}
 	\section{Vektorer}
@@ -1337,6 +1439,42 @@ Denne fundne $t$-værdi indsættes i definitionen
 \[
 	\vec{a}_b = t \cdot \vec{b} = \frac{\vec{a} \cdot \vec{b}}{\vec{b}^2} \cdot \vec{b}.\qedhere
 \] 
+\end{proof}
+
+Man kan bruge projektionsformlen til at bestemme den korteste afstand mellem et
+punkt og en linje.
+
+\smallskip
+
+\begin{theorem}{Afstand mellem punkt og linje}{dstpl}
+	Lad en linje, $l$, være givet på normalform $\vektor{x - x_0}{y - y_0}
+	\cdot \vec{n} = 0$. Da er den korteste afstand mellem punktet givet ved
+	stedvektoren $\vec{v}$ og linjen $l$ givet ved
+	\[
+		\frac{|(\vec{v} - \vec{c}) \cdot \vec{n}|}{|\vec{n}|}.
+	\] 
+\end{theorem}
+
+\begin{proof}
+	Lad $\vec{c}$ være $\vektor{x_0}{y_0}$. Linjen og stedvektoren forskydes
+	med $\vec{c}$, således at den forskudte linje er givet ved
+	\[
+		\vektor{x}{y} \cdot \vec{n} = 0,
+	\] 
+	og stedvektoren for det forskudte punkt ved
+	\[
+		\vec{v} - \vec{c}.
+	\] 
+
+	Nu går den forskudte linje gennem origo, og dermed kan afstanden fra det
+	forskudte punkt til den forskudte linje (som må være den samme afstand som
+	fra punktet til linjen) bestemmes ved længden af $(\vec{v} -
+	\vec{c})_{n}$
+	\begin{align*}
+		|\vec{v}l| &= \left| \frac{(\vec{v} - \vec{c}) \cdot \vec{n}}{\vec{n}^2} \cdot \vec{n} \right|\\
+				   &= \frac{|(\vec{v} - \vec{c}) \cdot \vec{n}|}{|\vec{n}|^2} \cdot |\vec{n}|\\
+				   &= \frac{|(\vec{v} - \vec{c}) \cdot \vec{n}|}{|\vec{n}|}.\qedhere
+	\end{align*}
 \end{proof}
 
 \begin{tcolorbox}

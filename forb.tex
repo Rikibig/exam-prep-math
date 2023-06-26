@@ -204,14 +204,14 @@ til punktet.}
 \end{definition}
 
 \begin{theorem}{Logaritme laver gange om til plus}{loggangeplus}
-	\[\log_A{B \cdot C} = \log_AB + \log_AC\]
+	\[\log_A(B \cdot C) = \log_AB + \log_AC\]
 \end{theorem}
 
 \begin{proof}
 \begin{align*}
-	\log_A{B \cdot C} &= \log_AB + \log_AC \iff\\
+	\log_A(B \cdot C) &= \log_AB + \log_AC \iff\\
 \intertext{Der opløftes i A for at potensregneregler kan benyttes}
-	A^{\log_A{B \cdot C}} &= A^{\log_AB + \log_AC}\\
+	A^{\log_A(B \cdot C)} &= A^{\log_AB + \log_AC}\\
 \intertext{Føromtalte potensregneregel benyttes}
 						  &= A^{\log_AB} \cdot A^{\log_AC} \iff\\
 \intertext{$A^{\log_A}$ går ud}
@@ -227,7 +227,7 @@ til punktet.}
 \begin{proof}
 Opløftning er det samme som gentagen gange
 \begin{align*}
-	\log_AB^C &= \log_A{\underbrace{B \cdot B \cdots B}_{C\text{ gange}}}\\
+	\log_AB^C &= \log_A{\underbrace{(B \cdot B \cdots B)}_{C\text{ gange}}}\\
 \intertext{Jævnfør sætning \ref{th:loggangeplus}, kan man skrive}
 			  &= \underbrace{\log_A{B} + \log_A{B} + \cdots + \log_A{B}}_{C\text{ gange}}\\
 \intertext{Da der lægges sammen C gange, og gange er gentaget plus, så gælder}
@@ -844,9 +844,9 @@ fordi $f(x_0)$ ikke påvirkes af $x$. Altså er $A$ en stamfunktion til $f$.
 
 \begin{proof}
 $g^x$ er en følge der integreres, ganske som i diskret analyse. Dermed skal der
-blot findes stamfølgen til $g^x$. Det er $\frac{1}{g-1} g^x$.
+blot findes en stamfølg til $g^x$. Det er $\frac{1}{g-1} g^x$.
 
-\opg{Vis at stamfølgen til $g^x$ er $\frac{1}{g-1}g^x$.}
+\opg{Vis at $\frac{1}{g-1}g^x$ er en stamfølge til $g^x$.}
 
 \medskip
 
@@ -1408,6 +1408,27 @@ Da fås
 		\item $\vec{a}_b - \vec{a} \bot \vec{b} \iff (\vec{a}_b - \vec{a}) \cdot \vec{b} = 0$.
 	\end{itemize}
 \end{definition}
+En grafisk fremstilling af projektion kan ses på figur \ref{projektion}.
+\begin{figure}[hbt]
+	\centering
+	\begin{tikzpicture}
+
+		\clip (0, 0) rectangle (7, 3);
+		
+		\draw[->, name path=a] (0, 0) coordinate (O) -- node[auto] {$\vec{a}$} (4, 3) coordinate (A);
+		\draw[->, name path=b] (0, 0) -- (7, 2) node[above left] {$\vec{b}$} coordinate (B);
+		
+		\path[name path=aproj] (4, 3) -- +(2, -7);
+
+		\path[name intersections={of=aproj and b, by={aprojb}}];
+
+		\draw[->, red, semithick] (O) -- (aprojb) node[below] {$\vec{a}_b$};
+		\draw[] (A) -- (aprojb) pic [angle radius=2mm, draw, black] {right angle = O--aprojb--A};
+	\end{tikzpicture}
+	\caption{Grafisk fremstilling af projektion. Der projiceres på $\vec{b}$,
+	hvor den røde vektor angiver projektionen.}
+	\label{projektion}
+\end{figure}
 
 \begin{theorem}{Projektion}{proj}
 	Givet to vektorer, $\vec{a}$ og $\vec{b}$, er formlen for den projicerede
@@ -1447,9 +1468,9 @@ punkt og en linje.
 \smallskip
 
 \begin{theorem}{Afstand mellem punkt og linje}{dstpl}
-	Lad en linje, $l$, være givet på normalform $\vektor{x - x_0}{y - y_0}
+	Lad en linje, $\ell$, være givet på normalform $\vektor{x - x_0}{y - y_0}
 	\cdot \vec{n} = 0$. Da er den korteste afstand mellem punktet givet ved
-	stedvektoren $\vec{v}$ og linjen $l$ givet ved
+	stedvektoren $\vec{v}$ og linjen $\ell$ givet ved
 	\[
 		\frac{|(\vec{v} - \vec{c}) \cdot \vec{n}|}{|\vec{n}|}.
 	\] 

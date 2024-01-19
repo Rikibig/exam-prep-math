@@ -145,8 +145,8 @@ punktet. Dermed gælder
 \]
 Derfor
 \begin{align*}
-    \dot{\vec{r}} = {\vektor{\cos}{\sin}} &= \widehat{\vektor{\cos}{\sin}} = \hat{\vec{r}}\\
-                        \vektor{\cos'}{\sin'}    &= \vektor{-\sin}{\cos}.
+    \dot{\vec{r}} = {\vektor{\cos}{\sin}}' &= \widehat{\vektor{\cos}{\sin}} = \hat{\vec{r}}\\
+                        \implies \vektor{\cos'}{\sin'}    &= \vektor{-\sin}{\cos}.
 \end{align*}
 Da lighedstegnet gælder koordinatvis, er beviset gennemført.
 \end{proof}
@@ -171,7 +171,8 @@ til punktet.}
 \end{align*}
 \end{proof}
 
-\opg{Overvej hvorfor tangens er $\frac{\sin}{\cos}$.}
+\opg{Overvej hvorfor tangens er $\frac{\sin}{\cos}$, eller formuleret
+anderledes, hvad tangens beskriver.}
 
 \opg{Overvej hvad vektorfunktioner ellers kan bruges til.}
 
@@ -199,7 +200,7 @@ til punktet.}
 \begin{definition}{Logaritme}{log}
     Logaritmen med grundtal $a$ defineres så
     \[
-        \log_a{a^x} = x,\qquad a \in \mathbb{R}\backslash\{0, 1\}, x\in\mathbb{R}.
+        \log_a{a^x} = x,\qquad a > 0 \text{ og } a \ne 1, x\in\mathbb{R}.
     \] 
 \end{definition}
 
@@ -234,6 +235,10 @@ Opløftning er det samme som gentagen gange
               &= C \cdot \log_AB.\qedhere
 \end{align*}
 \end{proof}
+
+\textit{Bemærk:} Dette bevis giver dog kun mening for et naturligt $C$, da vi ikke uden videre kan sige hvad det betyder at gange noget med sig selv f.eks. en halv gang.
+
+\opg{Heldigvis er der en udvej. Vis at sætningen ovenfor også gælder for $C \in \mathbb{R}$. \emph{Hint: Benyt at $A^{B \cdot C} = (A^B)^C$}.}
 
 \begin{theorem}{Logaritmeregneregel}{logswap}
     $A^{\log_BC} = C^{\log_BA}$.
@@ -279,14 +284,14 @@ Reglen opskrives
 \end{theorem}
 
 \begin{proof}
-y ønskes at kunne blive fundet ud fra vilkårlig x. Til det formål skal vi kende
+$y$ ønskes at kunne blive fundet ud fra vilkårlig $x$. Til det formål skal vi kende
 $n$.
 \begin{align*}
     x &= c\cdot \Rho x^n\\
     n &= \log_{\Rho x}{\frac{x}{c}}
 \end{align*}
 
-Denne $n$ kan indsættes i udtrykket for $y_n$, så enhver y kan findes.
+Denne $n$ kan indsættes i udtrykket for $y_n$, så enhver $y$ kan findes.
 \begin{align*}
     y &= d\cdot \Rho y^{\log_{\Rho x}{\frac{x}{c}}}\\
 \intertext{Per sætning \ref{th:logpotenstilgange}}
@@ -308,7 +313,7 @@ Denne $n$ kan indsættes i udtrykket for $y_n$, så enhver y kan findes.
 \opg{Vis hvordan $y$ kan beskrives i en gange-plusfølge, plus-gangefølge og
 plus-plusfølge. \textit{Hint:} Benyt samme idé som i ovenstående bevis.}
 
-\opg{Kan alle følger kombineres med samme idé? \textit{Hint:} Overvej hvis $x$
+\opg{Kan alle følger (ikke nødvendigvis plus- og gangefølger) kombineres med samme idé? \textit{Hint:} Overvej hvis $x$
 beskrives ved $n^2$.}
 
 \begin{tcolorbox}
@@ -368,13 +373,13 @@ beskrives ved $n^2$.}
     \] 
 \end{definition}
 
-\opg{Bestem $\nabla f(3, 5)$.}
+\opg{Bestem $\nabla f(3, 5)$ med samme $f$ som i eksemplet.}
 
 \begin{definition}{Stationære punkter}{station}
     Et stationært punkt til en funktion $f(x, y)$ defineres ved et punkt 
     $(x_0, y_0)$ hvor $x_0$ og $y_0$ opfylder
     \[
-        \nabla f(x_0, y_0) = \vec{0}.
+        \nabla f(x_0, y_0) = \vec{0} = \vektor{0}{0}.
     \] 
 \end{definition}
 
@@ -386,8 +391,8 @@ beskrives ved $n^2$.}
     \] 
 \end{definition}
 
-\opg{Overvej hvilken effekt det har, at forskellen mellem forventningen ($f$)
-og det rigtige resultat ($y_i$) sættes i anden.}
+\opg{Overvej hvilken effekt det har, at forskellen mellem forventningen ($f(x_i)$)
+og observationen ($y_i$) sættes i anden.}
 
 \begin{theorem}{Proportionalitetsregression}{propreg}
     Den bedste hældning for en ret linje ved brug af mindste kvadraters metode
@@ -408,7 +413,7 @@ Først opskrives kvadratsummen for en given hældning
 Nu ønskes den optimale hældning $a_{reg}$ fundet, således at kvadratsummen bliver
 mindst. Der differentieres og sættes lig nul.
 \begin{align*}
-    KS'(a_{reg}) &= 0\\
+    0 &= KS'(a_{reg}) \\
                  &= \left(\sum_{i=1}^n (x_i \cdot a_{reg} - y_i)^2\right)'\\
 \intertext{Grundet ledvis differentiation}
                  &= \sum_{i=1}^n \left((x_i \cdot a_{reg} - y_i)^2\right)'\\
@@ -471,7 +476,7 @@ Da det ønskes at finde minimum for funktionen, og et minimum er et stationært
 punkt, og der kun er et stationært punkt for funktionen, som også er et
 minimum, kan definition \ref{df:station} bruges.
 
-\opg{Hvorfor er der kun et stationært punkt, som er et minimum?}
+\opg{Hvorfor er der kun et stationært punkt, som er et minimum? \emph{Hint: Betragt evt. graden af de partielt afledede.}}
 
 \smallskip
 
@@ -526,7 +531,7 @@ kvadraters metode.}
     \end{enumerate}
 \end{tcolorbox}
 \begin{itemize}
-    \item I diskret analyse benyttes talfølger; i stedet for tal funktioner.
+    \item I diskret analyse benyttes talfølger; i stedet for talfunktioner.
     \item For at gøre notationen af uendeligt lange talfølger nemmere, kan man benytte sig af funktionsnotation
         \[
             f(x), x\in\mathbb{N}.
@@ -578,7 +583,7 @@ kvadraters metode.}
 \end{itemize}
 
 \begin{definition}{Produkt af to følger}{listproduct}
-    $ (f \cdot g)(x) = f(x) \cdot g(x) $ 
+    $ (f \cdot g)(x) = f(x) \cdot g(x) $
 \end{definition}
 
 \begin{theorem}{Produktregel for differentiation}{produktdiff}
@@ -641,17 +646,21 @@ eksempel \ref{ex:x-i-n-streg}.}
     \end{enumerate}
 \end{eksempel*}
 
+I disse noter er der en forhåbning om at læseren har en intuition for hvad en
+grænseværdi er, thi definitionen er noget bøvlet.
+
 \begin{definition}{Kontinuitet}{kont}
-    Grænseværdien for $f(x)$ når $x$ går mod $x_0$ er $f(x_0)$
-    \[\lim_{x\to x_0} f(x) = f(x_0).\]    
+    Hvis grænseværdien for $f(x)$ når $x$ går mod $x_0$ er $f(x_0)$
+    \[\lim_{x\to x_0} f(x) = f(x_0),\]
+    så er $f$ kontinuert.
 \end{definition}
 
-For at noget skal være kontinuert, skal, hvis x-værdierne er tæt på hinanden,
-y-værdierne også være tæt på hinanden. Vi går ud fra, at alle
+For at noget skal være kontinuert, skal, hvis $x$-værdierne er tæt på hinanden,
+$y$-værdierne også være tæt på hinanden. Vi går ud fra, at alle
 standardfunktioner er kontinuerte.
 
 \opg{\textit{Temmelig svær, i væsentlig grad uden for pensum}, Vis at
-standardfunktionerne er kontinuerte.}
+standardfunktionerne er kontinuerte. Det tager kun et semester på uni.}
 
 \newcommand\sek[2]{d_{#1,#2}}
 \begin{definition}{Sekanthældning}{sekant}
@@ -704,7 +713,7 @@ Da $x_0$ er vilkårlig gælder
 
 \opg{Afled $e^{5x^2}$.}
 
-\opg{Overvej hvornår dette bevis ikke gælder.}
+\opg{Overvej hvad der sker hvis $g$ er konstant.}
 
 \begin{theorem}{Afledte logaritme}{difflog}
     $(\ln \cdot)' = \frac{1}{\cdot}$
@@ -731,6 +740,7 @@ Da $x$ er vilkårlig
 \end{theorem}
 
 \begin{proof}
+Lad $x \in \mathbb{R}$. Så er
 \begin{align*}
     (\ln{x^n})' &= (n \cdot \ln{x})'\\
     (\ln{x^n})' &= n (\ln{x})'\\
@@ -750,7 +760,9 @@ Og da $x$ er vilkårlig
 
 \begin{tcolorbox}
     \section{Differential- og integralregning}
-    Er tilsyneladende ufærdig. % TODO
+    \textbf{Dette afsnit er ufærdigt og upålideligt. Der er mindst en fejl i
+    afsnittet. Hvis man ønsker, så kan man jo prøve at finde den.}
+    Ellers kan man håbe der på et tidspunkt kommer en opdateret udgave på \href{https://github.com/Rikibig/exam-prep-math}{github.com/Rikibig/exam-prep-math}.
     \tcblower
     \begin{enumerate}
         \item Giv en præsentation af en selvvalgt del af teorien for 
@@ -867,7 +879,7 @@ Således gælder
 \end{theorem}
 
 \begin{proof}
-Der definieres følgende for at undgå skrivekrampe $g = r+1$.
+Der defineres følgende for at undgå skrivekrampe $g = r+1$.
 
 \smallskip
 
@@ -1073,7 +1085,6 @@ vores binomialkoefficient gøres på netop \vbinom{n}{r} måder. Altså fås
         \[
             P(p\in[\hat p \pm 2\cdot\sqrt{\frac{\hat p\cdot(1-\hat p)}{n}}]) \approx 95\%
         \]
-    \item Ved $\hat p = \frac{X}{n}$, og $X \in $
 \end{itemize}
 
 \begin{theorem}{95\%-konfidensinterval}{95konfidens}
@@ -1101,7 +1112,7 @@ vores binomialkoefficient gøres på netop \vbinom{n}{r} måder. Altså fås
     \[
         P\left(p\in\left[\hat p \pm 2\cdot\sqrt{\frac{\hat p\cdot(1-\hat p)}{n}}\right]\right)
         \approx 95\%.\qedhere
-    \] 
+    \]
 \end{proof}
 
 \begin{tcolorbox}
@@ -1249,7 +1260,7 @@ sætning.
     Ovenstående sætninger giver anledning til at definere en
     standardnormalfordeling
     \[
-        \frac{1}{2\pi} \cdot e^{-\frac{1}{2}x^2}.
+        \frac{1}{\sqrt{2\pi}} \cdot e^{-\frac{1}{2}x^2}.
     \] 
 \end{definition}
 
@@ -1267,7 +1278,7 @@ Derfor skal man også strække lodret med den multiplikativt inverse af $\sigma$
 \begin{theorem}{Normalfordelingen}{norm}
     Tæthedsfunktionen for en normalfordelt stokastisk variabel med middelværdi $\mu$ og spredning $\sigma$ er givet ved
     \[
-        \frac{1}{2\pi\sigma} e^{-\frac{1}{2}\left(\frac{x - \mu}{\sigma}\right)}.
+        \frac{1}{\sqrt{2\pi}\sigma} e^{-\frac{1}{2}\left(\frac{x - \mu}{\sigma}\right)^2}.
     \] 
 \end{theorem}
 
@@ -1309,7 +1320,7 @@ Derfor skal man også strække lodret med den multiplikativt inverse af $\sigma$
                           &= (\vec{a} + \vec{b}) \cdot \vec{a} + (\vec{a} + \vec{b}) \cdot \vec{b}\\
                           &= \vec{a} \cdot (\vec{a} + \vec{b}) + \vec{b} \cdot (\vec{a} + \vec{b})\\
                           &= \vec{a}\,^2 + \vec{a} \cdot \vec{b} + \vec{b} \cdot \vec{a} + \vec{b}\,^2\\
-                          &= \vec{a}\,^2 + 2 \cdot \vec{a} \cdot \vec{b} + \vec{b}\,^2\\
+                          &= \vec{a}\,^2 + 2 \cdot (\vec{a} \cdot \vec{b}) + \vec{b}\,^2\\
                           \intertext{Der omarrangeres}
     \vec{a} \cdot \vec{b} &= \frac{(\vec{a} + \vec{b})^2 - \vec{a}\,^2 - \vec{b}\,^2}{2}\\
                           &= \frac{|\vec{a} + \vec{b}|^2 - |\vec{a}|^2 - |\vec{b}|^2}{2}\qedhere
@@ -1404,8 +1415,8 @@ Da fås
 
     $\vec{a}_b$ skal opfylde følgende egenskaber
     \begin{itemize}
-        \item $\vec{a}_b \parallel \vec{b} \iff \vec{a_b} = t \cdot \vec{b}$,
-        \item $\vec{a}_b - \vec{a} \bot \vec{b} \iff (\vec{a}_b - \vec{a}) \cdot \vec{b} = 0$.
+        \item $\vec{a}_b \parallel \vec{b} \iff \vec{a_b} = t \cdot \vec{b}$ for et $t \in \mathbb{R}$,
+        \item $(\vec{a}_b - \vec{a}) \perp \vec{b} \iff (\vec{a}_b - \vec{a}) \cdot \vec{b} = 0$.
     \end{itemize}
 \end{definition}
 En grafisk fremstilling af projektion kan ses på figur \ref{projektion}.
@@ -1490,13 +1501,14 @@ punkt og en linje.
     Nu går den forskudte linje gennem origo, og dermed kan afstanden fra det
     forskudte punkt til den forskudte linje (som må være den samme afstand som
     fra punktet til linjen) bestemmes ved længden af $(\vec{v} -
-    \vec{c})_{n}$
+    \vec{c})_{n}$ (projektionen af $\vec{v} - \vec{c}$ på $n$)
     \begin{align*}
         |\vec{v}l| &= \left| \frac{(\vec{v} - \vec{c}) \cdot \vec{n}}{\vec{n}^2} \cdot \vec{n} \right|\\
-                   &= \frac{|(\vec{v} - \vec{c}) \cdot \vec{n}|}{|\vec{n}|^2} \cdot |\vec{n}|\\
+                   &= \frac{|(\vec{v} - \vec{c}) \cdot \vec{n}|}{|\vec{n}|^2} \cdot |\vec{n}|\tag{1}\label{sketchy}\\
                    &= \frac{|(\vec{v} - \vec{c}) \cdot \vec{n}|}{|\vec{n}|}.\qedhere
     \end{align*}
 \end{proof}
+\emph{Note:} Vi antager i \eqref{sketchy} at $|\cdot|$ er en norm, mere specifikt at $|t \cdot \vec{a}| = |t| \cdot |\vec{a}|$.
 
 \begin{tcolorbox}
     \section{Annuiteter}
@@ -1615,7 +1627,7 @@ hvor $k$ er konstant og $F$ er kraften og $x$ er strækningen af en fjeder. Dvs.
 at man kan skrive følgende differentialligning op
 \[
     m \cdot x'' = -k \cdot x,
-\],
+\]
 hvor $m$ er massen. Dette er hvad man kalder en andenordensdifferentialligning,
 idet $x$ er afledt to gange.
 
@@ -1702,7 +1714,7 @@ være brugbar.
     \] 
     hvor $A^{-1}$ betegner urbilledet\footnote{Et \index{urbillede} $X$ til en
     funktionsværdi $y$ ved en funktion $f$ er definieret som $X = \{x \in
-\Omega(f) | f(x) = y\}$.} af $A$.
+\Omega(f) | f(x) = y\}$. Kort fortalt, alle de tal der giver $y$.} af $A$.
 \end{theorem}
 
 \begin{proof}
@@ -1719,6 +1731,9 @@ være brugbar.
         y &= A^{-1}\left(\int b(x) \ud x\right)\qedhere
     \end{align*}
 \end{proof}
+
+\opg{Hvis man er i den heldige situation at $a(y) > 0$ for alle $y$, er da
+urbilledet $A^{-1}$ det samme som inversen?}
 
 \begin{tcolorbox}
     \section{Differentialligninger}
@@ -1769,11 +1784,11 @@ Se ovenstående afsnit for mere information om differentialligninger.
     \[
         (y \cdot A(x))' = A(x) \cdot y' + a(x) \cdot y.
     \] 
-    Desværre passer denne ikke umiddelbart. Med en omskrivning ses hvad der er
-    brug for
+    Desværre passer denne ikke umiddelbart. Ved at dele med $A(x)$ fås den ønskede $y'$
     \[
-        \frac{(y \cdot A(x))'}{A(x)} = y' + \frac{a(x)}{A(x)} \cdot y.
-    \] 
+        \frac{(y \cdot A(x))'}{A(x)} = y' + \frac{a(x)}{A(x)} \cdot y,
+    \]
+    men faktoren foran $y$ passer ikke.
     På en eller anden måde skal der ikke divideres med $A(x)$. Hvis nu man kan
     omskrive $A(x)$ på en måde så det lykkes, så kald den omskrivning $g$
     \begin{align*}

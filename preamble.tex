@@ -15,7 +15,7 @@
 \usetikzlibrary {angles, quotes, through}
 \usetikzlibrary{calc, tikzmark, intersections}
 
-\usepackage[e]{esvect}
+%\usepackage[e]{esvect}
 
 \usepackage{tcolorbox}
 
@@ -61,8 +61,8 @@ colbacktitle=blue!30!white,coltitle=black!90!white,fonttitle=\itshape}{ex}
 \newtcbtheorem[number within=section]{definition}{Definition}{theorem style=plain, colframe=black, colback=white, boxrule=0.25mm, sharp corners=all,%
 colbacktitle=blue!30!white,coltitle=black!90!white,fonttitle=\bfseries}{df}
 
-\newtcbtheorem[number within=section]{theorem}{Sætning}{sharp corners=all, theorem style=plain, colframe=black, colback=white,%
+\newtcbtheorem[number within=section, use counter from=definition]{theorem}{Sætning}{sharp corners=all, theorem style=plain, colframe=black, colback=white,%
 colbacktitle=blue!30!white,coltitle=black!90!white,fonttitle=\bfseries, boxrule=0.25mm}{th}
 
-\newtcbtheorem[number within=section]{lemma}{Lemma}{sharp corners=all, theorem style=plain, colframe=black, colback=white,%
+\newtcbtheorem[number within=section, use counter from=definition]{lemma}{Lemma}{sharp corners=all, theorem style=plain, colframe=black, colback=white,%
 colbacktitle=blue!30!white,coltitle=black!90!white,fonttitle=\bfseries, boxrule=0.25mm}{lm}
